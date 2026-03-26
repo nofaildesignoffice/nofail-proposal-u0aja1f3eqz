@@ -1,63 +1,539 @@
-# 정보 부족 알림
+<!-- PAGE: 필요한 페이지 구성 (회사소개, 서비스 소개, 문의 등) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>필요한 페이지 구성 - 웹사이트 기획</title>
+  <meta name="description" content="웹사이트에 필요한 페이지 구성 안내">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-현재 제공된 자료에서 **"타겟 고객" 페이지에 대한 구체적인 기획 내용이 전혀 없습니다.**
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
 
-확인된 정보:
-- 페이지명: "타겟 고객"
-- 파일명: page_03.html
-- **기획 내용**: 없음
-- **섹션 구성**: 없음
-- **카피**: 없음
-- **UI 지시**: 없음
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
----
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-black);
+      font-weight: 600;
+    }
 
-## 기획 진행을 위해 필요한 정보
+    /* Hero Section */
+    .hero-section {
+      padding: 120px 0 80px;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .section-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
 
-**"타겟 고객" 페이지에 대해 최소한 아래 정보를 제공해 주세요:**
+    /* Page Structure Section */
+    .page-structure-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .structure-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .structure-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      transition: box-shadow 0.3s;
+    }
+    .structure-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .card-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .card-list {
+      list-style: disc;
+      padding-left: 20px;
+      margin-top: 12px;
+    }
+    .card-list li {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 6px;
+    }
 
-### 1. 기본 정보
-- 회사명/브랜드명
-- 업종 (예: B2B SaaS, 병원, 제조업 등)
-- 실제 타겟 고객 (예: "중소 제조기업", "30대 여성", "스타트업 대표" 등)
+    /* Essential Pages Section */
+    .essential-pages-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .pages-timeline {
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+    .timeline-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--bg-dark);
+      color: var(--bg-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .timeline-content {
+      flex: 1;
+    }
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
 
-### 2. 페이지 구성
-- 섹션 수 (예: Hero + 타겟 소개 + 고객 사례 등)
-- 각 섹션별 내용:
-  - 헤드카피
-  - 서브카피
-  - 타겟 고객 분류 (예: 고객 유형 A, B, C)
-  - UI 레이아웃 (예: "3열 카드", "좌우 분할" 등)
-  - CTA 버튼 텍스트
+    /* CTA Section */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--bg-dark);
+      text-align: center;
+    }
+    .cta-section .section-title {
+      color: var(--bg-white);
+      margin-bottom: 16px;
+    }
+    .cta-section .section-desc {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.85;
+    }
+    .btn-primary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--bg-white);
+    }
 
-### 3. 실제 콘텐츠
-- 타겟 고객 페르소나 정보
-- 각 타겟별 니즈/페인포인트
-- 실제 고객 사례 (있는 경우)
+    /* Footer */
+    .footer {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
 
----
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .section-title {
+        font-size: 32px;
+      }
+      .structure-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
 
-## 임시 예시 (참고용)
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">웹사이트 기획</a>
+        <nav class="nav-links">
+          <a href="page_01.html">사업/서비스 내용</a>
+          <a href="page_02.html">주요 제공 서비스나 제품</a>
+          <a href="page_03.html" class="active">필요한 페이지 구성</a>
+          <a href="page_04.html">타겟 고객층</a>
+          <a href="page_05.html">웹사이트의 목적</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-만약 "B2B 제조 솔루션" 회사라면:
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <p class="section-label">Website Structure</p>
+        <h1 class="section-title">필요한 페이지 구성</h1>
+        <p class="section-desc">효과적인 웹사이트를 위한 핵심 페이지 구조를 안내합니다</p>
+      </div>
+    </section>
 
-```
-섹션 1: Hero
-- 타이틀: "어떤 고객과 함께하나요?"
-- 서브: "다양한 산업군의 제조 기업과 파트너십을 맺고 있습니다"
+    <!-- Page Structure Section -->
+    <section class="page-structure-section">
+      <div class="container">
+        <div class="structure-grid">
+          <div class="structure-card">
+            <div class="card-icon">
+              <i data-lucide="home"></i>
+            </div>
+            <h3 class="card-title">회사소개</h3>
+            <p class="card-desc">기업의 정체성과 비전을 전달하는 핵심 페이지</p>
+            <ul class="card-list">
+              <li>회사 개요 및 연혁</li>
+              <li>비전과 미션</li>
+              <li>조직 구성</li>
+              <li>주요 실적</li>
+            </ul>
+          </div>
 
-섹션 2: 타겟 고객 유형 (3열 카드)
-- 카드 1: 중소 제조기업 / 연 매출 100억 미만 / 자동화 초기 단계
-- 카드 2: 중견 제조기업 / 연 매출 100~500억 / 라인 확장 단계
-- 카드 3: 대기업 / 연 매출 500억 이상 / 글로벌 경쟁력 강화
+          <div class="structure-card">
+            <div class="card-icon">
+              <i data-lucide="package"></i>
+            </div>
+            <h3 class="card-title">서비스 소개</h3>
+            <p class="card-desc">제공하는 서비스와 제품의 상세 정보</p>
+            <ul class="card-list">
+              <li>서비스 카테고리</li>
+              <li>상세 설명</li>
+              <li>특장점</li>
+              <li>가격 정보</li>
+            </ul>
+          </div>
 
-섹션 3: 고객 사례 (2열 카드)
-- 사례 1: A사 / 제조업 / "생산성 30% 향상"
-- 사례 2: B사 / 식품업 / "불량률 50% 감소"
-```
+          <div class="structure-card">
+            <div class="card-icon">
+              <i data-lucide="mail"></i>
+            </div>
+            <h3 class="card-title">문의</h3>
+            <p class="card-desc">고객과의 소통을 위한 접점 제공</p>
+            <ul class="card-list">
+              <li>문의 양식</li>
+              <li>연락처 정보</li>
+              <li>오시는 길</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
 
----
+          <div class="structure-card">
+            <div class="card-icon">
+              <i data-lucide="users"></i>
+            </div>
+            <h3 class="card-title">고객 사례</h3>
+            <p class="card-desc">신뢰도를 높이는 성공 사례 공유</p>
+            <ul class="card-list">
+              <li>프로젝트 소개</li>
+              <li>고객 후기</li>
+              <li>성과 지표</li>
+              <li>포트폴리오</li>
+            </ul>
+          </div>
 
-위와 같은 **실제 정보**를 제공해 주시면, 즉시 완전한 HTML 와이어프레임을 생성하겠습니다.
+          <div class="structure-card">
+            <div class="card-icon">
+              <i data-lucide="newspaper"></i>
+            </div>
+            <h3 class="card-title">소식/블로그</h3>
+            <p class="card-desc">최신 정보와 인사이트 제공</p>
+            <ul class="card-list">
+              <li>뉴스 및 공지</li>
+              <li>산업 동향</li>
+              <li>전문가 칼럼</li>
+              <li>이벤트 정보</li>
+            </ul>
+          </div>
 
-**절대 규칙**: 구체적 사실(회사명, 숫자, 고객명 등)은 창작하지 않으므로, 실제 데이터가 필요합니다.
+          <div class="structure-card">
+            <div class="card-icon">
+              <i data-lucide="briefcase"></i>
+            </div>
+            <h3 class="card-title">채용</h3>
+            <p class="card-desc">인재 영입을 위한 정보 제공</p>
+            <ul class="card-list">
+              <li>채용 공고</li>
+              <li>복리후생</li>
+              <li>조직문화</li>
+              <li>지원 방법</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Essential Pages Section -->
+    <section class="essential-pages-section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <p class="section-label">Core Pages</p>
+          <h2 class="section-title">필수 페이지 구성 순서</h2>
+          <p class="section-desc">웹사이트 구축 시 우선순위에 따른 페이지 구성 가이드</p>
+        </div>
+        <div class="pages-timeline">
+          <div class="timeline-item">
+            <div class="timeline-number">1</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">홈페이지 (메인)</h3>
+              <p class="timeline-desc">방문자가 가장 먼저 접하는 페이지로, 전체 사이트의 인상을 결정하는 핵심 페이지입니다</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-number">2</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">회사소개 / 서비스 소개</h3>
+              <p class="timeline-desc">기업의 정체성과 제공 가치를 명확히 전달하는 기본 페이지입니다</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-number">3</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">문의 / 연락처</h3>
+              <p class="timeline-desc">고객과의 직접적인 소통 창구로, 전환율에 직결되는 중요 페이지입니다</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-number">4</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">사례 / 포트폴리오</h3>
+              <p class="timeline-desc">신뢰도 구축을 위한 실적과 성과를 보여주는 페이지입니다</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-number">5</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">추가 페이지 (블로그, 채용 등)</h3>
+              <p class="timeline-desc">비즈니스 특성에 따라 필요한 부가 페이지를 구성합니다</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">맞춤형 페이지 구성 상담</h2>
+        <p class="section-desc">귀사의 비즈니스에 최적화된 페이지 구조를 제안해드립니다</p>
+        <a href="page_05.html" class="btn btn-primary">
+          웹사이트 목적 확인하기
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">웹사이트 기획</p>
+          <p class="footer-brand-desc">효과적인 웹사이트 구축을 위한 기획 가이드</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">페이지</p>
+          <a href="page_01.html">사업/서비스 내용</a>
+          <a href="page_02.html">주요 제공 서비스나 제품</a>
+          <a href="page_03.html">필요한 페이지 구성</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">정보</p>
+          <a href="page_04.html">타겟 고객층</a>
+          <a href="page_05.html">웹사이트의 목적</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">문의</p>
+          <a href="page_05.html">상담 신청</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 웹사이트 기획. All rights reserved.</span>
+        <span>이용약관 | 개인정보처리방침</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
