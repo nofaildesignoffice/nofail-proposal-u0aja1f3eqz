@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회사소개 | 고객사</title>
-  <meta name="description" content="고객사의 철학, 대표 인사말, 오시는 길을 확인하세요.">
+  <title>기타 구매 가이드 | 기타 전문 온라인 악기점</title>
+  <meta name="description" content="기타가 처음이라면 3분 맞춤 가이드로 시작하세요. 예산·장르·손 크기별 추천, 모델별 스펙 비교표, 입문자 필수 악세서리까지 한 곳에.">
+  <meta name="keywords" content="초보 기타 추천, 기타 고르는 법, 입문용 기타, 어쿠스틱 클래식 차이, 어린이 기타 사이즈, 기타 스펙 비교">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -47,7 +48,81 @@
       padding: 0 24px;
     }
 
-    /* Header */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
+    /* HEADER */
     .nav {
       position: sticky;
       top: 0;
@@ -70,163 +145,185 @@
       display: flex;
       gap: 32px;
     }
-    .nav-links a {
+    .nav-links > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      transition: color 0.2s;
+      position: relative;
     }
-    .nav-links a:hover { color: var(--text-black); }
-    .nav-links a.active { color: var(--text-black); font-weight: 600; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
+    .nav-links > a.active {
+      color: var(--text-black);
+      font-weight: 600;
     }
-    .hamburger span {
-      width: 24px;
+    .nav-links > a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      right: 0;
       height: 2px;
       background: var(--text-black);
     }
-
-    /* Button */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-
-    /* Section Common */
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* Image Placeholder */
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-    .img-placeholder-fullscreen {
-      background: var(--placeholder-bg);
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .img-placeholder-fullscreen svg {
-      color: var(--placeholder-icon);
-      width: 64px;
-      height: 64px;
-    }
-
-    /* Icon Box */
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .icon-box svg {
+    .nav-hamburger {
+      display: none;
       width: 24px;
       height: 24px;
       color: var(--text-dark);
     }
 
-    /* Section 1: Hero Statement */
-    .hero-statement {
-      position: relative;
-      height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* HERO */
+    .hero-intro {
+      padding: 80px 0 60px;
+      background: var(--bg-white);
       text-align: center;
-      background: var(--bg-dark);
-      color: #FFFFFF;
     }
-    .hero-statement .section-title {
-      color: #FFFFFF;
+    .hero-intro .section-title {
       font-size: 42px;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto 16px;
     }
-    .hero-statement .section-desc {
-      color: rgba(255,255,255,0.7);
-      font-size: 18px;
-      margin: 0 auto 32px;
+    .hero-intro .section-desc {
+      margin: 0 auto 48px;
     }
-    .hero-statement .statement-text {
-      color: rgba(255,255,255,0.85);
-      font-size: 16px;
-      line-height: 1.8;
-      max-width: 700px;
+    .guide-tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      max-width: 600px;
       margin: 0 auto;
     }
-
-    /* Section 2: Core Values */
-    .core-values {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-    }
-    .value-card {
+    .guide-tab {
+      flex: 1;
+      padding: 16px 24px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
       text-align: center;
-      padding: 32px 24px;
+      transition: all 0.2s;
+    }
+    .guide-tab:hover {
+      background: var(--bg-white);
+      border-color: var(--border-default);
+    }
+
+    /* GUIDE SECTION */
+    .guide-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .guide-section .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .guide-steps {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .guide-step {
+      margin-bottom: 60px;
+    }
+    .guide-step:last-child {
+      margin-bottom: 0;
+    }
+    .step-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .step-title::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--text-black);
+      border-radius: 2px;
+    }
+    .step-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .step-option {
+      padding: 24px;
+      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
     }
-    .value-icon {
+    .option-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .option-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .guide-table {
+      width: 100%;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .guide-table th,
+    .guide-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .guide-table th {
+      background: var(--bg-light);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .guide-table td {
+      font-size: 15px;
+      color: var(--text-gray);
+    }
+    .guide-table tr:last-child td {
+      border-bottom: none;
+    }
+    .guide-conclusion {
+      margin-top: 40px;
+      padding: 32px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .guide-conclusion p {
+      font-size: 16px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ACCESSORIES */
+    .accessories-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .accessories-section .text-center {
+      margin-bottom: 48px;
+    }
+    .accessories-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .accessory-card {
+      text-align: center;
+    }
+    .accessory-icon {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -234,115 +331,155 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 16px;
     }
-    .value-icon svg {
+    .accessory-icon svg {
       width: 28px;
       height: 28px;
       color: var(--text-dark);
     }
-    .value-title {
-      font-size: 18px;
+    .accessory-title {
+      font-size: 16px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .value-desc {
-      font-size: 15px;
+    .accessory-desc {
+      font-size: 14px;
       color: var(--text-gray);
       line-height: 1.6;
     }
+    .accessories-cta {
+      text-align: center;
+    }
 
-    /* Section 3: CEO Message */
-    .ceo-message {
+    /* SPEC COMPARISON */
+    .spec-section {
       padding: 80px 0;
       background: var(--bg-light);
     }
-    .ceo-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 60px;
-      align-items: start;
-      margin-top: 48px;
+    .spec-section .text-center {
+      margin-bottom: 48px;
     }
-    .ceo-photo {
-      aspect-ratio: 3/4;
+    .spec-comparison {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      overflow: hidden;
     }
-    .ceo-content .ceo-name {
-      font-size: 18px;
+    .spec-table-wrap {
+      overflow-x: auto;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .spec-table th,
+    .spec-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .spec-table th {
+      background: var(--bg-light);
+      font-size: 14px;
       font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
+      color: var(--text-dark);
+      position: sticky;
+      top: 0;
     }
-    .ceo-content .ceo-text {
-      font-size: 16px;
+    .spec-table td {
+      font-size: 15px;
       color: var(--text-gray);
-      line-height: 1.8;
+    }
+    .spec-table tr:last-child td {
+      border-bottom: none;
+    }
+    .spec-table .spec-row-title {
+      font-weight: 600;
+      color: var(--text-black);
+    }
+    .spec-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .spec-note {
+      margin-top: 24px;
+      padding: 20px;
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text-light);
+      text-align: center;
     }
 
-    /* Section 4: Location */
-    .location {
+    /* FAQ */
+    .faq-section {
       padding: 80px 0;
       background: var(--bg-white);
     }
-    .location-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: start;
-      margin-top: 48px;
+    .faq-section .text-center {
+      margin-bottom: 48px;
     }
-    .location-map {
-      aspect-ratio: 16/10;
-      border-radius: var(--radius-md);
-      overflow: hidden;
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .location-info .info-item {
-      padding: 16px 0;
+    .faq-item {
       border-bottom: 1px solid var(--border-light);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
     }
-    .location-info .info-item:last-child { border-bottom: none; }
-    .info-label {
-      font-size: 15px;
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      font-size: 17px;
       font-weight: 600;
       color: var(--text-black);
-      min-width: 80px;
+      text-align: left;
+      gap: 16px;
     }
-    .info-value {
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-light);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.is-open .faq-question svg {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 0 24px;
       font-size: 15px;
       color: var(--text-gray);
-      line-height: 1.6;
+      line-height: 1.8;
     }
-    .info-notice {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 24px;
-      padding: 16px;
-      background: var(--bg-light);
-      border-radius: var(--radius-sm);
+    .faq-item.is-open .faq-answer {
+      display: block;
     }
 
-    /* Section 5: CTA */
-    .cta-light {
+    /* CONTACT */
+    .contact-section {
       padding: 80px 0;
-      text-align: center;
       background: var(--bg-light);
+      text-align: center;
     }
-    .cta-light .section-title {
-      max-width: 500px;
+    .contact-section .section-title {
+      max-width: 700px;
       margin: 0 auto 16px;
     }
-    .cta-light .section-desc { 
+    .contact-section .section-desc {
       margin: 0 auto 32px;
     }
 
-    /* Footer */
-    .footer-light {
+    /* FOOTER */
+    .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -385,250 +522,432 @@
       color: var(--text-muted);
     }
 
-    /* TOP Button */
-    .btn-top {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 48px;
-      height: 48px;
-      background: var(--text-black);
-      color: #FFFFFF;
-      border-radius: 50%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-      cursor: pointer;
-      z-index: 90;
-    }
-    .btn-top.visible { display: flex; }
-    .btn-top svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Responsive */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hamburger { display: flex; }
+      .nav-hamburger { display: block; }
       .section-title { font-size: 28px; }
-      .hero-statement .section-title { font-size: 32px; }
-      .values-grid { grid-template-columns: 1fr; gap: 24px; }
-      .ceo-inner,
-      .location-inner { grid-template-columns: 1fr; gap: 32px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .btn-top { bottom: 24px; right: 24px; width: 44px; height: 44px; }
+      .hero-intro .section-title { font-size: 32px; }
+      .guide-tabs { flex-direction: column; }
+      .step-options { grid-template-columns: 1fr; }
+      .accessories-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">고객사</a>
+        <a href="index.html" class="nav-logo">기타 전문몰</a>
         <nav class="nav-links">
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_02.html">주요 제공 상품/서비스</a>
           <a href="page_03.html" class="active">타겟 고객층</a>
-          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
-          <a href="page_05.html">Slack 메모 텍스트 내용</a>
+          <a href="page_04.html">필요한 주요 페이지 및 기능</a>
+          <a href="page_05.html">회사 소개 관련 정보</a>
+          <a href="page_06.html">고객 문의/상담 방식</a>
         </nav>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <button class="nav-hamburger">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- Section 1: Hero Statement -->
-    <section class="hero-statement">
-      <div class="img-placeholder-fullscreen">
-        <i data-lucide="image"></i>
-      </div>
-      <div class="container" style="position:relative; z-index:1;">
-        <h1 class="section-title">고객의 문제를 끝까지 해결하는 것이 우리의 일입니다</h1>
-        <p class="section-desc">시작부터 마무리까지, 책임지는 서비스를 약속합니다</p>
-        <p class="statement-text">저희는 고객이 겪는 불편을 정확히 파악하고, 가장 적합한 방법으로 해결하는 데 집중합니다. 과장된 약속 대신 실행으로 보여드리는 것이 저희의 방식입니다.</p>
+    <!-- SECTION 1: 히어로 -->
+    <section class="hero-intro">
+      <div class="container">
+        <h1 class="section-title">기타 100개 중에 나에게 맞는 건 딱 하나예요</h1>
+        <p class="section-desc mx-auto">예산, 장르, 손 크기, 연주 경험까지 고려한 맞춤 가이드를 준비했어요</p>
+        <div class="guide-tabs">
+          <a href="#beginner-guide" class="guide-tab">처음 사는 분을 위한 초보자 가이드</a>
+          <a href="#spec-comparison" class="guide-tab">모델별 스펙 비교표</a>
+        </div>
       </div>
     </section>
 
-    <!-- Section 2: Core Values -->
-    <section class="core-values">
+    <!-- SECTION 2: 초보자 가이드 -->
+    <section id="beginner-guide" class="guide-section">
+      <div class="container">
+        <h2 class="section-title">3가지만 정하면 기타가 보여요</h2>
+        <div class="guide-steps">
+          
+          <!-- STEP 1 -->
+          <div class="guide-step">
+            <h3 class="step-title">STEP 1 — 어떤 소리가 좋아요?</h3>
+            <div class="step-options">
+              <div class="step-option">
+                <p class="option-title">어쿠스틱</p>
+                <p class="option-desc">줄을 튕기면 울림이 통째로 전해지는 따뜻한 소리. 캠프파이어 옆에서, 방 안에서 혼자 치기 좋아요.</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">일렉트릭</p>
+                <p class="option-desc">앰프와 이펙터를 연결하면 록, 블루스, 재즈까지 다양한 톤을 만들 수 있어요. 밴드를 꿈꾸는 분에게 추천.</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">베이스</p>
+                <p class="option-desc">리듬과 그루브를 담당하는 저음 악기. 밴드에서 드러머와 함께 곡의 뼈대를 세워요.</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">클래식(나일론)</p>
+                <p class="option-desc">손가락이 아프지 않은 부드러운 현. 클래식 음악이나 핑거스타일에 적합해요.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="guide-step">
+            <h3 class="step-title">STEP 2 — 예산은 어느 정도예요?</h3>
+            <div class="step-options">
+              <div class="step-option">
+                <p class="option-title">30만원 이하</p>
+                <p class="option-desc">입문용으로 충분해요. 브랜드 정품 중 가성비 좋은 모델이 많아요.</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">30~50만원</p>
+                <p class="option-desc">목재와 마감 품질이 한 단계 올라가요. 오래 칠 계획이면 이 구간을 추천해요.</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">50~100만원</p>
+                <p class="option-desc">중급자 업그레이드 구간. 솔리드 탑이나 고급 픽업이 탑재된 모델을 고를 수 있어요.</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">100만원 이상</p>
+                <p class="option-desc">올솔리드, 커스텀 사양. 무대 연주나 레코딩용으로 적합해요.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="guide-step">
+            <h3 class="step-title">STEP 3 — 손 크기와 체형</h3>
+            <div class="step-options">
+              <div class="step-option">
+                <p class="option-title">표준 사이즈(성인)</p>
+                <p class="option-desc">드레드넛, 점보 바디 — 풍성한 음량</p>
+              </div>
+              <div class="step-option">
+                <p class="option-title">슬림 바디(손이 작거나 체형이 작은 분)</p>
+                <p class="option-desc">그랜드 오디토리엄, 파라 바디 — 안기 편하고 넥이 좁아요</p>
+              </div>
+            </div>
+            <div style="margin-top:24px;">
+              <p class="option-title" style="margin-bottom:16px;">어린이용(초등학생 이하)</p>
+              <table class="guide-table">
+                <thead>
+                  <tr>
+                    <th>연령</th>
+                    <th>권장 사이즈</th>
+                    <th>총 길이(약)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4~6세</td>
+                    <td>1/4 사이즈</td>
+                    <td>76cm</td>
+                  </tr>
+                  <tr>
+                    <td>6~9세</td>
+                    <td>1/2 사이즈</td>
+                    <td>86cm</td>
+                  </tr>
+                  <tr>
+                    <td>9~12세</td>
+                    <td>3/4 사이즈</td>
+                    <td>92cm</td>
+                  </tr>
+                  <tr>
+                    <td>12세 이상</td>
+                    <td>풀 사이즈</td>
+                    <td>100cm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 가이드 결론 -->
+          <div class="guide-conclusion">
+            <p>아직도 고민된다면, 카카오톡으로 '추천해 주세요'라고 보내주세요. 전문 상담사가 5분 내로 맞춤 추천 드려요.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: 악세서리 -->
+    <section class="accessories-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">저희가 지키는 3가지 약속</h2>
-          <p class="section-desc mx-auto">모든 서비스의 기준이 되는 원칙입니다</p>
+          <h2 class="section-title">기타만 사면 반쪽이에요</h2>
+          <p class="section-desc mx-auto">처음 시작할 때 꼭 필요한 것만 골랐어요</p>
         </div>
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-icon">
-              <i data-lucide="shield-check"></i>
+        <div class="accessories-grid">
+          <div class="accessory-card">
+            <div class="accessory-icon">
+              <i data-lucide="radio"></i>
             </div>
-            <h3 class="value-title">정직</h3>
-            <p class="value-desc">불필요한 것은 권하지 않습니다</p>
+            <h3 class="accessory-title">튜너</h3>
+            <p class="accessory-desc">기타 줄 튜닝은 매번 해야 해요. 클립형 튜너 하나면 충분해요.</p>
           </div>
-          <div class="value-card">
-            <div class="value-icon">
-              <i data-lucide="check-circle"></i>
+          <div class="accessory-card">
+            <div class="accessory-icon">
+              <i data-lucide="zap"></i>
             </div>
-            <h3 class="value-title">책임</h3>
-            <p class="value-desc">맡은 일은 끝까지 마무리합니다</p>
+            <h3 class="accessory-title">피크</h3>
+            <p class="accessory-desc">스트로크 연주에 필수. 두께별로 느낌이 다르니 얇은 것(0.46mm)부터 시작해 보세요.</p>
           </div>
-          <div class="value-card">
-            <div class="value-icon">
-              <i data-lucide="message-circle"></i>
+          <div class="accessory-card">
+            <div class="accessory-icon">
+              <i data-lucide="grip"></i>
             </div>
-            <h3 class="value-title">소통</h3>
-            <p class="value-desc">고객의 이야기를 먼저 듣습니다</p>
+            <h3 class="accessory-title">카포</h3>
+            <p class="accessory-desc">코드를 쉽게 바꿔주는 도구. 노래방 기계의 '키 조절' 같은 역할이에요.</p>
           </div>
+          <div class="accessory-card">
+            <div class="accessory-icon">
+              <i data-lucide="package"></i>
+            </div>
+            <h3 class="accessory-title">기타 케이스/가방</h3>
+            <p class="accessory-desc">이동할 때 긁힘 방지. 소프트 케이스면 입문용으로 충분해요.</p>
+          </div>
+          <div class="accessory-card">
+            <div class="accessory-icon">
+              <i data-lucide="layers"></i>
+            </div>
+            <h3 class="accessory-title">여분 현 세트</h3>
+            <p class="accessory-desc">현은 소모품이에요. 1~2세트 여분을 갖고 있으면 갑자기 끊어져도 안심.</p>
+          </div>
+        </div>
+        <div class="accessories-cta">
+          <a href="page_02.html" class="btn btn-primary">악세서리 전체 보기</a>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: CEO Message -->
-    <section class="ceo-message">
+    <!-- SECTION 4: 스펙 비교표 -->
+    <section id="spec-comparison" class="spec-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">대표 인사말</h2>
+          <h2 class="section-title">숫자로 비교하면 고민이 줄어요</h2>
+          <p class="section-desc mx-auto">목재, 넥 두께, 무게, 픽업 유무까지 한 표로 정리했어요</p>
         </div>
-        <div class="ceo-inner">
-          <div class="ceo-photo img-placeholder">
-            <i data-lucide="user"></i>
+        <div class="spec-comparison">
+          <div class="spec-table-wrap">
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>비교 항목</th>
+                  <th>제품 A</th>
+                  <th>제품 B</th>
+                  <th>제품 C</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="spec-row-title">바디 탑 목재</td>
+                  <td>스프루스</td>
+                  <td>시더</td>
+                  <td>마호가니</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">바디 백&사이드 목재</td>
+                  <td>마호가니</td>
+                  <td>로즈우드</td>
+                  <td>마호가니</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">넥 소재 + 두께</td>
+                  <td>마호가니 / 21mm</td>
+                  <td>메이플 / 20mm</td>
+                  <td>마호가니 / 22mm</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">지판 소재</td>
+                  <td>로즈우드</td>
+                  <td>에보니</td>
+                  <td>테크우드</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">프렛 수</td>
+                  <td>20</td>
+                  <td>22</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">무게</td>
+                  <td>1.8kg</td>
+                  <td>2.0kg</td>
+                  <td>1.9kg</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">픽업</td>
+                  <td>없음</td>
+                  <td>피에조 픽업</td>
+                  <td>마그네틱 픽업</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">번들 악세서리</td>
+                  <td>케이스, 튜너</td>
+                  <td>케이스, 튜너, 스트랩</td>
+                  <td>케이스</td>
+                </tr>
+                <tr>
+                  <td class="spec-row-title">판매가</td>
+                  <td>35만원</td>
+                  <td>48만원</td>
+                  <td>42만원</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="ceo-content">
-            <p class="ceo-name">대표 [이름]</p>
-            <p class="ceo-text">안녕하세요. 고객사 대표 [이름]입니다. 저희는 고객 한 분 한 분의 상황을 진심으로 이해하고, 가장 적합한 솔루션을 제공하기 위해 노력하고 있습니다. 홈페이지를 방문해 주셔서 감사합니다. 궁금한 점이 있으시면 언제든 편하게 연락 주세요.</p>
+          <div class="spec-actions">
+            <a href="page_02.html" class="btn btn-secondary">제품 A 자세히 보기</a>
+            <a href="page_02.html" class="btn btn-secondary">제품 B 자세히 보기</a>
+            <a href="page_02.html" class="btn btn-secondary">제품 C 자세히 보기</a>
+          </div>
+          <div class="spec-note">
+            실제 취급 제품 스펙 데이터는 제품 페이지에서 확인하실 수 있습니다
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Location -->
-    <section class="location">
+    <!-- SECTION 5: FAQ -->
+    <section class="faq-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">오시는 길</h2>
+          <h2 class="section-title">기타 사기 전에 가장 많이 물어보는 것들</h2>
         </div>
-        <div class="location-inner">
-          <div class="location-map img-placeholder">
-            <i data-lucide="map"></i>
+        <div class="faq-list">
+          <div class="faq-item is-open">
+            <button class="faq-question">
+              온라인으로 기타를 사도 괜찮은가요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              30일 체험 후 전액 환불 보장이에요. 받아보고 소리가 마음에 안 들면 택배비 무료로 보내주시면 돼요. 오프라인 매장과 동일한 정품만 취급해요.
+            </div>
           </div>
-          <div class="location-info">
-            <div class="info-item">
-              <div class="icon-box">
-                <i data-lucide="map-pin"></i>
-              </div>
-              <div>
-                <p class="info-label">주소</p>
-                <p class="info-value">[주소 정보 미제공]</p>
-              </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              어쿠스틱이랑 클래식 기타, 뭐가 달라요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              가장 큰 차이는 현이에요. 어쿠스틱은 스틸 현이라 밝고 큰 소리가 나고, 클래식은 나일론 현이라 부드럽고 손가락이 덜 아파요. 팝/록을 치고 싶다면 어쿠스틱, 클래식 음악이나 핑거스타일이라면 클래식을 추천해요.
             </div>
-            <div class="info-item">
-              <div class="icon-box">
-                <i data-lucide="phone"></i>
-              </div>
-              <div>
-                <p class="info-label">전화</p>
-                <p class="info-value">[전화번호 미제공]</p>
-              </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              입문용 기타, 얼마짜리를 사야 해요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              20~40만원대면 소리와 내구성 모두 만족할 수 있어요. 너무 저렴하면 음정이 안 맞거나 넥이 휘는 경우가 있어서, 브랜드 정품 기준 20만원 이상을 추천해요.
             </div>
-            <div class="info-item">
-              <div class="icon-box">
-                <i data-lucide="mail"></i>
-              </div>
-              <div>
-                <p class="info-label">이메일</p>
-                <p class="info-value">[이메일 미제공]</p>
-              </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              기타 배송 중에 파손되면 어떡하나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              전용 하드케이스 또는 이중 완충 포장으로 발송해요. 만약 배송 중 파손이 발생하면 사진 첨부 후 연락 주시면 100% 무상 교환 처리해 드려요.
             </div>
-            <div class="info-item">
-              <div class="icon-box">
-                <i data-lucide="clock"></i>
-              </div>
-              <div>
-                <p class="info-label">영업시간</p>
-                <p class="info-value">[영업시간 미제공]</p>
-              </div>
-            </div>
-            <div class="info-notice">
-              <i data-lucide="alert-circle" style="width:16px; height:16px; vertical-align:middle; margin-right:4px;"></i>
-              교통안내 및 주차 정보는 실제 주소 확보 후 업데이트 예정입니다.
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              아이 기타는 몇 살부터 시작할 수 있어요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              4~5세부터 1/4 사이즈로 시작할 수 있어요. 위 연령별 사이즈 가이드를 참고해 주세요. 자녀용 제품은 KC 인증, 무독성 도장 제품만 취급해요.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: CTA -->
-    <section class="cta-light">
+    <!-- SECTION 6: Contact -->
+    <section class="contact-section">
       <div class="container">
-        <h2 class="section-title">더 알고 싶으시면 직접 물어보세요</h2>
-        <p class="section-desc mx-auto">상담 문의는 언제든 환영합니다</p>
-        <a href="page_04.html" class="btn btn-primary">문의하기</a>
+        <h2 class="section-title">가이드를 봐도 고민이라면, 사람한테 물어보세요</h2>
+        <p class="section-desc mx-auto">카카오톡으로 '추천해 주세요' 한 마디면 5분 내 답변</p>
+        <a href="page_06.html" class="btn btn-primary">문의하기</a>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer-light">
+  <!-- FOOTER -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">고객사</p>
-          <p class="footer-brand-desc">고객의 문제를 끝까지 해결합니다</p>
+          <p class="footer-brand-name">기타 전문몰</p>
+          <p class="footer-brand-desc">온라인 기타 구매의 새로운 기준</p>
         </div>
         <div>
           <p class="footer-col-title">메뉴</p>
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_02.html">주요 제공 상품/서비스</a>
           <a href="page_03.html">타겟 고객층</a>
         </div>
         <div>
           <p class="footer-col-title">안내</p>
-          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
-          <a href="page_05.html">Slack 메모 텍스트 내용</a>
+          <a href="page_04.html">필요한 주요 페이지 및 기능</a>
+          <a href="page_05.html">회사 소개 관련 정보</a>
+          <a href="page_06.html">고객 문의/상담 방식</a>
         </div>
         <div>
           <p class="footer-col-title">고객 지원</p>
-          <a href="#">전화: [미제공]</a>
-          <a href="#">이메일: [미제공]</a>
+          <a href="page_06.html">문의하기</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 고객사. All rights reserved.</span>
+        <span>© 2025 기타 전문몰. All Rights Reserved.</span>
         <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
-  <!-- TOP Button -->
-  <button class="btn-top" id="btnTop">
-    <i data-lucide="arrow-up"></i>
-  </button>
-
   <script>
     lucide.createIcons();
 
-    // TOP Button
-    const btnTop = document.getElementById('btnTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
-      } else {
-        btnTop.classList.remove('visible');
-      }
+    // FAQ 아코디언
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('is-open');
+        
+        // 모든 아이템 닫기
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        
+        // 클릭한 아이템이 닫혀있었으면 열기
+        if (!wasOpen) {
+          item.classList.add('is-open');
+        }
+      });
     });
-    btnTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // 탭 스무스 스크롤
+    document.querySelectorAll('.guide-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(tab.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   </script>
+
 </body>
 </html>
