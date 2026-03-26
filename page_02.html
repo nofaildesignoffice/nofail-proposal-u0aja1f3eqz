@@ -1,11 +1,11 @@
-<!-- PAGE: 주요 제공 서비스나 제품 -->
+<!-- PAGE: 주요 제공 상품 또는 서비스 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>주요 제공 서비스나 제품</title>
-  <meta name="description" content="주요 제공 서비스나 제품 정보">
+  <title>서비스 소개 | 고객사</title>
+  <meta name="description" content="고객사가 제공하는 서비스를 확인하세요. 고객 상황에 맞는 맞춤 솔루션을 안내합니다.">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -47,6 +47,101 @@
       padding: 0 24px;
     }
 
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    /* 공통 텍스트 */
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* 이미지 플레이스홀더 */
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+    .img-placeholder-fullscreen {
+      background: var(--placeholder-bg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 0;
+    }
+    .img-placeholder-fullscreen svg {
+      color: var(--placeholder-icon);
+      width: 64px;
+      height: 64px;
+    }
+
+    /* 아이콘 박스 */
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
     /* NAV */
     .nav {
       position: sticky;
@@ -74,229 +169,239 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      transition: color 0.2s;
     }
-    .nav-links a:hover,
     .nav-links a.active {
       color: var(--text-black);
-      font-weight: 600;
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* 버튼 */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-    .btn-sm {
-      padding: 10px 20px;
-      font-size: 14px;
-    }
-
-    /* 섹션 공통 */
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .section-title {
-      font-size: 36px;
       font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
     }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 640px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* 이미지 플레이스홀더 */
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-
-    /* 아이콘 박스 */
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .icon-box svg {
+    .nav-hamburger {
+      display: none;
       width: 24px;
       height: 24px;
-      color: var(--text-dark);
+      color: var(--text-black);
     }
 
-    /* HERO */
-    .hero-section {
-      padding: 120px 0 80px;
-      background: var(--bg-white);
+    /* HERO - 풀스크린 다크 배경 */
+    .hero-service {
+      position: relative;
+      padding: 160px 0 120px;
+      background: var(--bg-dark);
       text-align: center;
+      overflow: hidden;
     }
-    .hero-section .section-title {
-      font-size: 42px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+    .hero-service .section-title {
+      color: #FFFFFF;
+      font-size: 48px;
+      max-width: 700px;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 1;
     }
-    .hero-section .section-desc {
-      margin: 0 auto 32px;
-      max-width: 560px;
+    .hero-service .section-desc {
+      color: rgba(255,255,255,0.7);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    /* 서비스 그리드 */
-    .services-section {
+    /* 탭 전환 섹션 */
+    .tabs-section {
       padding: 80px 0;
-      background: var(--bg-light);
+      background: var(--bg-white);
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .tabs-nav {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
       margin-top: 48px;
+      margin-bottom: 48px;
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 0;
+    }
+    .tab-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      color: var(--text-black);
+      border-bottom-color: var(--text-black);
+    }
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
     }
     .service-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      transition: box-shadow 0.2s;
-    }
-    .service-card:hover {
-      box-shadow: var(--shadow-md);
-    }
-    .service-card .icon-box {
-      margin-bottom: 20px;
-    }
-    .service-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .service-card-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .service-card-link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .service-card-link svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* 상세 정보 섹션 */
-    .detail-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .detail-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
-      margin-top: 48px;
     }
-    .detail-content h3 {
+    .service-content h3 {
       font-size: 24px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-    .detail-content ul {
-      list-style: none;
-      margin-bottom: 24px;
+    .service-meta {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 20px;
     }
-    .detail-content ul li {
+    .service-features {
+      list-style: disc;
+      padding-left: 20px;
+      margin-top: 16px;
+    }
+    .service-features li {
       font-size: 15px;
       color: var(--text-gray);
-      padding: 8px 0;
-      padding-left: 28px;
-      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.6;
     }
-    .detail-content ul li::before {
-      content: "•";
-      position: absolute;
-      left: 8px;
-      color: var(--text-muted);
+
+    /* 차별점 섹션 */
+    .diff-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .diff-list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .diff-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .diff-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .diff-icon svg {
+      width: 32px;
+      height: 32px;
+      color: var(--text-dark);
+    }
+    .diff-content h3 {
+      font-size: 20px;
       font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .diff-content p {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* 가격 안내 섹션 */
+    .pricing-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .pricing-card {
+      max-width: 720px;
+      margin: 48px auto 0;
+      padding: 40px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-light);
+    }
+    .pricing-card p {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .pricing-card p:last-child {
+      margin-bottom: 0;
+    }
+    .pricing-card a {
+      color: var(--text-black);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* FAQ 섹션 */
+    .faq-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .faq-list {
+      max-width: 720px;
+      margin: 48px auto 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-white);
+      margin-bottom: 8px;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      text-align: left;
+      background: none;
+    }
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-light);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.is-open .faq-question svg {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .faq-item.is-open .faq-answer {
+      display: block;
     }
 
     /* CTA 섹션 */
-    .cta-section {
+    .cta-light {
       padding: 80px 0;
-      background: var(--bg-dark);
+      background: var(--bg-white);
       text-align: center;
     }
-    .cta-section .section-title {
-      color: #FFFFFF;
-      max-width: 600px;
+    .cta-light .section-title {
+      max-width: 500px;
       margin: 0 auto 16px;
     }
-    .cta-section .section-desc {
-      color: rgba(255,255,255,0.7);
+    .cta-light .section-desc {
       margin: 0 auto 32px;
-    }
-    .cta-section .btn-primary {
-      background: #FFFFFF;
-      color: var(--text-black);
-      border-color: #FFFFFF;
     }
 
     /* FOOTER */
-    .footer {
+    .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -330,10 +435,6 @@
       font-size: 14px;
       color: var(--text-light);
       padding: 4px 0;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover {
-      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -343,14 +444,53 @@
       color: var(--text-muted);
     }
 
+    /* TOP 버튼 */
+    .btn-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--text-black);
+      color: #FFFFFF;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
+    }
+    .btn-top.show {
+      display: flex;
+    }
+    .btn-top svg {
+      width: 20px;
+      height: 20px;
+    }
+
     /* 반응형 */
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .nav-hamburger { display: block; }
       .section-title { font-size: 28px; }
-      .hero-section .section-title { font-size: 32px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .detail-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .hero-service .section-title { font-size: 32px; }
+      .tabs-nav { flex-wrap: wrap; }
+      .service-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .diff-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .btn-top {
+        bottom: 24px;
+        right: 24px;
+      }
     }
   </style>
 </head>
@@ -360,141 +500,299 @@
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">Brand</a>
+        <a href="index.html" class="nav-logo">고객사</a>
         <nav class="nav-links">
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html" class="active">주요 제공 서비스나 제품</a>
-          <a href="page_03.html">필요한 페이지 구성</a>
-          <a href="page_04.html">타겟 고객층</a>
-          <a href="page_05.html">웹사이트의 목적</a>
+          <a href="page_02.html" class="active">주요 제공 상품 또는 서비스</a>
+          <a href="page_03.html">타겟 고객층</a>
+          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
+          <a href="page_05.html">Slack 메모 텍스트 내용</a>
         </nav>
-        <div class="nav-actions">
-          <a href="page_03.html" class="btn btn-primary btn-sm">문의하기</a>
-        </div>
+        <button class="nav-hamburger">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero-section">
+    <!-- 섹션 1: 히어로 -->
+    <section class="hero-service">
+      <div class="img-placeholder-fullscreen">
+        <i data-lucide="image"></i>
+      </div>
       <div class="container">
-        <p class="section-label">Services & Products</p>
-        <h1 class="section-title">주요 제공 서비스나 제품</h1>
-        <p class="section-desc">고객에게 제공하는 핵심 서비스와 제품을 소개합니다.</p>
+        <h1 class="section-title">필요한 서비스를<br>정확하게 제안합니다</h1>
+        <p class="section-desc mx-auto">고객 상황에 맞는 맞춤 솔루션을 제공합니다</p>
       </div>
     </section>
 
-    <!-- 서비스 그리드 -->
-    <section class="services-section">
+    <!-- 섹션 2: 서비스 카테고리 상세 (탭 전환) -->
+    <section class="tabs-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">제공 서비스</h2>
-          <p class="section-desc mx-auto">다양한 서비스와 제품을 통해 고객의 니즈를 충족합니다.</p>
+          <h2 class="section-title">고객 상황별로 준비한 서비스입니다</h2>
+          <p class="section-desc mx-auto">각 서비스의 특징과 적용 대상을 확인하세요</p>
         </div>
-        <div class="services-grid">
+
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="tab1">서비스 A</button>
+          <button class="tab-btn" data-tab="tab2">서비스 B</button>
+          <button class="tab-btn" data-tab="tab3">서비스 C</button>
+        </div>
+
+        <div class="tab-panel active" id="tab1">
           <div class="service-card">
-            <div class="icon-box">
-              <i data-lucide="package"></i>
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
             </div>
-            <h3 class="service-card-title">서비스 A</h3>
-            <p class="service-card-desc">서비스 A에 대한 설명을 입력합니다.</p>
-            <a href="#" class="service-card-link">
-              자세히 보기 <i data-lucide="arrow-right"></i>
-            </a>
+            <div class="service-content">
+              <h3>서비스명</h3>
+              <p class="service-meta">대상: [타겟 고객층]</p>
+              <p style="font-size:15px; color:var(--text-gray); line-height:1.7;">사업 내용 확정 후 서비스 설명을 기재합니다.</p>
+              <ul class="service-features">
+                <li>핵심 특징 1</li>
+                <li>핵심 특징 2</li>
+                <li>핵심 특징 3</li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <div class="tab-panel" id="tab2">
           <div class="service-card">
-            <div class="icon-box">
-              <i data-lucide="box"></i>
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
             </div>
-            <h3 class="service-card-title">서비스 B</h3>
-            <p class="service-card-desc">서비스 B에 대한 설명을 입력합니다.</p>
-            <a href="#" class="service-card-link">
-              자세히 보기 <i data-lucide="arrow-right"></i>
-            </a>
+            <div class="service-content">
+              <h3>서비스명</h3>
+              <p class="service-meta">대상: [타겟 고객층]</p>
+              <p style="font-size:15px; color:var(--text-gray); line-height:1.7;">사업 내용 확정 후 서비스 설명을 기재합니다.</p>
+              <ul class="service-features">
+                <li>핵심 특징 1</li>
+                <li>핵심 특징 2</li>
+                <li>핵심 특징 3</li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <div class="tab-panel" id="tab3">
           <div class="service-card">
-            <div class="icon-box">
-              <i data-lucide="layers"></i>
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
             </div>
-            <h3 class="service-card-title">서비스 C</h3>
-            <p class="service-card-desc">서비스 C에 대한 설명을 입력합니다.</p>
-            <a href="#" class="service-card-link">
-              자세히 보기 <i data-lucide="arrow-right"></i>
-            </a>
+            <div class="service-content">
+              <h3>서비스명</h3>
+              <p class="service-meta">대상: [타겟 고객층]</p>
+              <p style="font-size:15px; color:var(--text-gray); line-height:1.7;">사업 내용 확정 후 서비스 설명을 기재합니다.</p>
+              <ul class="service-features">
+                <li>핵심 특징 1</li>
+                <li>핵심 특징 2</li>
+                <li>핵심 특징 3</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 상세 정보 -->
-    <section class="detail-section">
+    <!-- 섹션 3: 차별점 -->
+    <section class="diff-section">
       <div class="container">
-        <div class="detail-grid">
-          <div class="img-placeholder" style="aspect-ratio:4/3;">
-            <i data-lucide="image"></i>
+        <div class="text-center">
+          <h2 class="section-title">같은 서비스라도<br>디테일이 다릅니다</h2>
+          <p class="section-desc mx-auto">저희가 고집하는 기준을 소개합니다</p>
+        </div>
+        <div class="diff-list">
+          <div class="diff-item">
+            <div class="diff-icon">
+              <i data-lucide="message-circle"></i>
+            </div>
+            <div class="diff-content">
+              <h3>상담 단계부터 다릅니다</h3>
+              <p>첫 상담에서 고객의 상황을 충분히 파악한 뒤, 불필요한 옵션 없이 꼭 필요한 서비스만 제안합니다</p>
+            </div>
           </div>
-          <div class="detail-content">
-            <p class="section-label">Features</p>
-            <h3>주요 특징</h3>
-            <ul>
-              <li>특징 1을 입력합니다</li>
-              <li>특징 2를 입력합니다</li>
-              <li>특징 3을 입력합니다</li>
-              <li>특징 4를 입력합니다</li>
-            </ul>
-            <a href="page_03.html" class="btn btn-primary">상담 신청하기</a>
+          <div class="diff-item">
+            <div class="diff-icon">
+              <i data-lucide="eye"></i>
+            </div>
+            <div class="diff-content">
+              <h3>진행 과정을 투명하게 공유합니다</h3>
+              <p>서비스 진행 현황을 단계별로 안내드려, 기다리는 동안 불안함이 없도록 합니다</p>
+            </div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon">
+              <i data-lucide="shield"></i>
+            </div>
+            <div class="diff-content">
+              <h3>완료 후에도 책임집니다</h3>
+              <p>서비스 이후 발생하는 추가 문의에도 동일한 담당자가 끝까지 대응합니다</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
+    <!-- 섹션 4: 가격 안내 -->
+    <section class="pricing-section">
       <div class="container">
-        <h2 class="section-title">서비스에 대해 더 알아보세요</h2>
-        <p class="section-desc">전문 상담을 통해 최적의 솔루션을 제공해 드립니다.</p>
-        <a href="page_03.html" class="btn btn-primary">문의하기</a>
+        <div class="text-center">
+          <h2 class="section-title">정확한 비용은<br>상담 후 안내드립니다</h2>
+          <p class="section-desc mx-auto">고객 상황에 따라 맞춤 견적을 제공하므로, 부담 없이 문의해 주세요</p>
+        </div>
+        <div class="pricing-card">
+          <p>서비스 범위와 조건에 따라 비용이 달라지기 때문에, 획일적인 가격표 대신 상담을 통해 정확한 견적을 안내드리고 있습니다.</p>
+          <p>상담 시 예상 비용 범위를 먼저 알려드리며, 추가 비용 발생 시 사전 동의 후 진행합니다.</p>
+          <p style="margin-top:24px;"><a href="page_04.html">문의하기</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 5: FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">서비스에 대해<br>자주 묻는 질문입니다</h2>
+          <p class="section-desc mx-auto">궁금한 점이 해결되지 않으면 언제든 문의해 주세요</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item is-open">
+            <button class="faq-question">
+              상담은 어떻게 신청하나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              홈페이지 문의 폼, 전화, 카카오톡 채널을 통해 신청할 수 있습니다. 접수 후 당일 내 회신을 드립니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              서비스 진행 기간은 얼마나 걸리나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              서비스 유형과 범위에 따라 다르며, 상담 시 예상 소요 기간을 안내드립니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              중간에 취소하거나 변경할 수 있나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              진행 단계에 따라 취소·변경이 가능하며, 구체적인 조건은 상담 시 안내드립니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              비용은 언제 결제하나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              상담 후 견적 확인 및 동의 절차를 거친 뒤 결제가 진행됩니다. 선입금을 강요하지 않습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 최하단 CTA -->
+    <section class="cta-light">
+      <div class="container">
+        <h2 class="section-title">서비스가 궁금하시면<br>편하게 문의하세요</h2>
+        <p class="section-desc mx-auto">상담은 무료이며, 빠르게 답변드리겠습니다</p>
+        <a href="page_04.html" class="btn btn-primary">문의하기</a>
       </div>
     </section>
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">Brand</p>
-          <p class="footer-brand-desc">브랜드 소개 문구를 입력합니다.</p>
+          <p class="footer-brand-name">고객사</p>
+          <p class="footer-brand-desc">회사 정보 확보 후 기재</p>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">메뉴</p>
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 서비스나 제품</a>
-          <a href="page_03.html">필요한 페이지 구성</a>
+          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_03.html">타겟 고객층</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">정보</p>
-          <a href="page_04.html">타겟 고객층</a>
-          <a href="page_05.html">웹사이트의 목적</a>
+        <div>
+          <p class="footer-col-title">안내</p>
+          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
+          <a href="page_05.html">Slack 메모 텍스트 내용</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">문의</p>
-          <a href="tel:">전화번호</a>
-          <a href="mailto:">이메일</a>
+        <div>
+          <p class="footer-col-title">고객 지원</p>
+          <a href="#">전화번호 미제공</a>
+          <a href="#">이메일 미제공</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Brand. All rights reserved.</span>
-        <span>이용약관 | 개인정보처리방침</span>
+        <span>© 2025 고객사. All Rights Reserved.</span>
+        <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
+  <!-- TOP 버튼 -->
+  <button class="btn-top" id="btnTop">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
   <script>
     lucide.createIcons();
+
+    // 탭 전환
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+        
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        
+        btn.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+      });
+    });
+
+    // FAQ 아코디언
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('is-open');
+        
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        
+        if (!isOpen) {
+          item.classList.add('is-open');
+        }
+      });
+    });
+
+    // TOP 버튼
+    const btnTop = document.getElementById('btnTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btnTop.classList.add('show');
+      } else {
+        btnTop.classList.remove('show');
+      }
+    });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
