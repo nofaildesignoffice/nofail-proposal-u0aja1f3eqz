@@ -1,17 +1,14 @@
-<!-- PAGE: 필요한 페이지 구성 요구사항 -->
+<!-- PAGE: 타겟 고객층 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>필요한 페이지 구성 요구사항</title>
-  <meta name="description" content="필요한 페이지 구성 요구사항">
+  <title>타겟 고객층</title>
+  <meta name="description" content="타겟 고객층">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* ==========================================
-       와이어프레임 CSS 변수
-       ========================================== */
     :root {
       --text-black: #1A1A1A;
       --text-dark: #333333;
@@ -32,9 +29,6 @@
       --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* ==========================================
-       리셋 & 기본
-       ========================================== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -47,97 +41,13 @@
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
 
-    /* ==========================================
-       레이아웃
-       ========================================== */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* ==========================================
-       공통 컴포넌트
-       ========================================== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .icon-box svg {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-    }
-
-    /* ==========================================
-       NAV
-       ========================================== */
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
@@ -179,80 +89,69 @@
       height: 2px;
       background: var(--text-black);
     }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
 
-    /* ==========================================
-       HERO
-       ========================================== */
+    /* HERO */
     .hero-center {
       padding: 120px 0 80px;
       background: var(--bg-white);
       text-align: center;
     }
-    .hero-center .section-title {
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .section-title {
       font-size: 42px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-center .section-desc { margin-left: auto; margin-right: auto; }
-
-    /* ==========================================
-       CONTENT SECTIONS
-       ========================================== */
-    .content-section {
-      padding: 80px 0;
-    }
-    .content-section.bg-light {
-      background: var(--bg-light);
-    }
-
-    .requirement-list {
-      max-width: 800px;
-      margin: 48px auto 0;
-    }
-    .requirement-item {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-light);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .requirement-item:last-child {
-      border-bottom: none;
-    }
-    .requirement-number {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .section-desc {
       font-size: 16px;
-      font-weight: 700;
-      color: var(--text-dark);
-      flex-shrink: 0;
-    }
-    .requirement-content h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .requirement-content p {
-      font-size: 15px;
       color: var(--text-gray);
       line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
     }
 
-    /* ==========================================
-       FOOTER
-       ========================================== */
+    /* CONTENT SECTION */
+    .content-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .content-box {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .content-box h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 24px;
+    }
+    .content-box p {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .content-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FOOTER */
     .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -296,196 +195,87 @@
       color: var(--text-muted);
     }
 
-    /* ==========================================
-       반응형
-       ========================================== */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .section-title { font-size: 28px; }
-      .hero-center .section-title { font-size: 32px; }
-      .requirement-item { flex-direction: column; gap: 12px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .section-title { font-size: 32px; }
+      .hero-center { padding: 80px 0 60px; }
+      .content-section { padding: 60px 0; }
+      .content-box { padding: 32px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==========================================
-       HEADER
-       ========================================== -->
+  <!-- HEADER -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">브랜드명</a>
+        <a href="index.html" class="nav-logo">고객명</a>
         <nav class="nav-links">
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 기능 또는 메뉴</a>
-          <a href="page_03.html">타겟 고객</a>
-          <a href="page_04.html" class="active">필요한 페이지 구성 요구사항</a>
-          <a href="page_05.html">Slack 메모의 실제 텍스트 내용</a>
+          <a href="page_02.html">주요 제공 서비스나 제품</a>
+          <a href="page_03.html">필요한 페이지 구성</a>
+          <a href="page_04.html" class="active">타겟 고객층</a>
+          <a href="page_05.html">웹사이트의 목적</a>
         </nav>
-        <div class="nav-actions">
-          <a href="page_05.html" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">문의하기</a>
-        </div>
       </div>
     </div>
   </header>
 
-  <!-- ==========================================
-       MAIN CONTENT
-       ========================================== -->
+  <!-- MAIN -->
   <main>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero-center">
       <div class="container">
-        <p class="section-label">페이지 구성</p>
-        <h1 class="section-title">필요한 페이지 구성 요구사항</h1>
-        <p class="section-desc mx-auto">효과적인 웹사이트 구축을 위해 필요한 페이지 구성 요구사항을 확인하세요.</p>
+        <p class="section-label">Target Audience</p>
+        <h1 class="section-title">타겟 고객층</h1>
+        <p class="section-desc">고객 정보가 제공되지 않아 구체적인 타겟 고객층을 표시할 수 없습니다.</p>
       </div>
     </section>
 
-    <!-- Requirements List Section -->
+    <!-- CONTENT -->
     <section class="content-section">
       <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">페이지 구성 요구사항</h2>
-          <p class="section-desc mx-auto">명확한 페이지 구성 요구사항을 제공해주시면, 더 효과적인 웹사이트를 구축할 수 있습니다.</p>
-        </div>
-        
-        <div class="requirement-list">
-          <div class="requirement-item">
-            <div class="requirement-number">1</div>
-            <div class="requirement-content">
-              <h3>사업 및 서비스 정보</h3>
-              <p>회사명, 업종, 주요 서비스 또는 제품에 대한 상세한 정보를 제공해주세요.</p>
-            </div>
-          </div>
-
-          <div class="requirement-item">
-            <div class="requirement-number">2</div>
-            <div class="requirement-content">
-              <h3>사이트맵 구조</h3>
-              <p>1depth 및 2depth 메뉴 구조를 포함한 확정된 사이트맵을 제공해주세요.</p>
-            </div>
-          </div>
-
-          <div class="requirement-item">
-            <div class="requirement-number">3</div>
-            <div class="requirement-content">
-              <h3>타겟 고객 정보</h3>
-              <p>주요 타겟 고객층, 페르소나, 고객의 니즈에 대한 정보를 제공해주세요.</p>
-            </div>
-          </div>
-
-          <div class="requirement-item">
-            <div class="requirement-number">4</div>
-            <div class="requirement-content">
-              <h3>콘텐츠 및 자료</h3>
-              <p>각 페이지에 포함될 텍스트 콘텐츠, 이미지, 동영상 등의 자료를 제공해주세요.</p>
-            </div>
-          </div>
-
-          <div class="requirement-item">
-            <div class="requirement-number">5</div>
-            <div class="requirement-content">
-              <h3>기능 요구사항</h3>
-              <p>필요한 특수 기능(예약 시스템, 결제, 회원가입 등)에 대한 요구사항을 명시해주세요.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Information Section -->
-    <section class="content-section bg-light">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">추가 정보 제공 방법</h2>
-          <p class="section-desc mx-auto" style="max-width: 640px;">아래 방법을 통해 페이지 구성에 필요한 정보를 제공해주실 수 있습니다.</p>
-        </div>
-
-        <div style="max-width: 800px; margin: 48px auto 0;">
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
-            <div style="padding: 32px; background: var(--bg-white); border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div class="icon-box" style="margin-bottom: 20px;">
-                <i data-lucide="file-text"></i>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: var(--text-black); margin-bottom: 8px;">문서 제출</h3>
-              <p style="font-size: 15px; color: var(--text-gray); line-height: 1.6;">회사 소개서, 사업 계획서 등의 문서를 제출해주세요.</p>
-            </div>
-
-            <div style="padding: 32px; background: var(--bg-white); border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div class="icon-box" style="margin-bottom: 20px;">
-                <i data-lucide="message-circle"></i>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: var(--text-black); margin-bottom: 8px;">인터뷰</h3>
-              <p style="font-size: 15px; color: var(--text-gray); line-height: 1.6;">직접 인터뷰를 통해 상세한 정보를 공유해주세요.</p>
-            </div>
-
-            <div style="padding: 32px; background: var(--bg-white); border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div class="icon-box" style="margin-bottom: 20px;">
-                <i data-lucide="link"></i>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: var(--text-black); margin-bottom: 8px;">참고 사이트</h3>
-              <p style="font-size: 15px; color: var(--text-gray); line-height: 1.6;">선호하는 디자인이나 기능의 참고 사이트를 공유해주세요.</p>
-            </div>
-
-            <div style="padding: 32px; background: var(--bg-white); border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div class="icon-box" style="margin-bottom: 20px;">
-                <i data-lucide="pen-tool"></i>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: var(--text-black); margin-bottom: 8px;">스케치/와이어프레임</h3>
-              <p style="font-size: 15px; color: var(--text-gray); line-height: 1.6;">페이지 구조에 대한 스케치나 와이어프레임을 제공해주세요.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="content-section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">정보 제공 및 문의</h2>
-          <p class="section-desc mx-auto">페이지 구성 요구사항에 대한 정보를 제공하거나 추가 문의사항이 있으시면 연락주세요.</p>
-          <div style="margin-top: 32px;">
-            <a href="page_05.html" class="btn btn-primary">문의하기</a>
-          </div>
+        <div class="content-box">
+          <h2>타겟 고객층 정보 필요</h2>
+          <p>현재 제공된 자료에는 타겟 고객층에 대한 구체적인 정보가 포함되어 있지 않습니다.</p>
+          <p>고객 인터뷰, 회사 자료, 또는 비즈니스 정보가 제공되면 다음 항목을 포함한 상세한 타겟 고객층 정보를 표시할 수 있습니다:</p>
+          <p>• 주요 고객 세그먼트<br>• 고객 연령대 및 특성<br>• 고객 니즈 및 페인포인트<br>• 구매 결정 요인<br>• 고객 여정</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ==========================================
-       FOOTER
-       ========================================== -->
+  <!-- FOOTER -->
   <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">브랜드명</p>
-          <p class="footer-brand-desc">브랜드 한 줄 설명</p>
+          <p class="footer-brand-name">고객명</p>
+          <p class="footer-brand-desc">브랜드 설명</p>
         </div>
         <div>
-          <p class="footer-col-title">메뉴</p>
+          <p class="footer-col-title">페이지</p>
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 기능 또는 메뉴</a>
-          <a href="page_03.html">타겟 고객</a>
+          <a href="page_02.html">주요 제공 서비스나 제품</a>
+          <a href="page_03.html">필요한 페이지 구성</a>
         </div>
         <div>
           <p class="footer-col-title">정보</p>
-          <a href="page_04.html">페이지 구성 요구사항</a>
-          <a href="page_05.html">Slack 메모</a>
+          <a href="page_04.html">타겟 고객층</a>
+          <a href="page_05.html">웹사이트의 목적</a>
         </div>
         <div>
-          <p class="footer-col-title">고객 지원</p>
-          <a href="page_05.html">문의하기</a>
+          <p class="footer-col-title">문의</p>
+          <a href="page_03.html">문의하기</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 브랜드명. All rights reserved.</span>
+        <span>© 2025 고객명. All rights reserved.</span>
         <span>이용약관 | 개인정보처리방침</span>
       </div>
     </div>
