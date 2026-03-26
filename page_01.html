@@ -1,11 +1,11 @@
-<!-- PAGE: Home -->
+<!-- PAGE: 사업/서비스 내용 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | [회사명]</title>
-  <meta name="description" content="[회사명] 공식 홈페이지">
+  <title>사업/서비스 내용</title>
+  <meta name="description" content="사업/서비스 내용 페이지">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -57,7 +57,86 @@
     }
 
     /* ==========================================
-       NAV - 밝은 배경
+       공통 컴포넌트
+       ========================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
+    /* ==========================================
+       NAV
        ========================================== */
     .nav {
       position: sticky;
@@ -65,29 +144,17 @@
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s ease;
-    }
-    .nav.scrolled {
-      box-shadow: var(--shadow-sm);
-    }
-    .nav.scrolled .nav-inner {
-      height: 64px;
-    }
-    .nav.scrolled .nav-logo {
-      font-size: 16px;
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
-      transition: height 0.3s ease;
     }
     .nav-logo {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      transition: font-size 0.3s ease;
     }
     .nav-links {
       display: flex;
@@ -97,163 +164,106 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      transition: color 0.2s;
+      position: relative;
     }
-    .nav-links a:hover,
     .nav-links a.active {
       color: var(--text-black);
+      font-weight: 600;
     }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--text-black);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-actions .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    /* 모바일 햄버거 */
     .nav-hamburger {
       display: none;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       flex-direction: column;
       justify-content: center;
-      gap: 5px;
+      gap: 4px;
     }
     .nav-hamburger span {
       display: block;
       width: 100%;
       height: 2px;
       background: var(--text-black);
-      transition: all 0.3s;
+      transition: 0.3s;
     }
 
     /* ==========================================
-       HERO SLIDER - 3슬라이드 자동 전환
+       HERO
        ========================================== */
-    .hero-slider {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .slider-track {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .hero-center {
+      padding: 120px 0 80px;
+      background: var(--bg-white);
       text-align: center;
     }
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
+    .hero-center .section-title {
+      font-size: 42px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .img-placeholder-fullscreen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--placeholder-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 0;
+    .hero-center .section-desc {
+      margin-left: auto;
+      margin-right: auto;
     }
-    .img-placeholder-fullscreen svg {
-      width: 80px;
-      height: 80px;
-      color: var(--placeholder-icon);
-    }
-    .slide-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 24px;
-      color: #FFFFFF;
-    }
-    .slide-sub {
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
-    }
-    .slide-title {
-      font-size: 48px;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.3;
-      margin-bottom: 24px;
-    }
-    .slide-desc {
-      font-size: 18px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-
-    /* 슬라이드 도트 네비게이션 */
-    .slider-dots {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
+    .hero-center .hero-buttons {
       display: flex;
       gap: 12px;
-      z-index: 10;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      padding: 0;
-    }
-    .dot.active {
-      background: #FFFFFF;
-      width: 32px;
-      border-radius: 6px;
-    }
-
-    /* 슬라이드 좌우 화살표 */
-    .slider-prev,
-    .slider-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      z-index: 10;
-    }
-    .slider-prev:hover,
-    .slider-next:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    .slider-prev { left: 32px; }
-    .slider-next { right: 32px; }
-    .slider-prev svg,
-    .slider-next svg {
-      width: 24px;
-      height: 24px;
+      margin-top: 32px;
     }
 
     /* ==========================================
-       FOOTER - 밝은 배경
+       CONTENT SECTION
+       ========================================== */
+    .content-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .content-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+    .content-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .content-card p {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .content-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ==========================================
+       FOOTER
        ========================================== */
     .footer-light {
       padding: 60px 0 32px;
@@ -262,7 +272,7 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
       gap: 40px;
       padding-bottom: 40px;
       border-bottom: 1px solid var(--border-light);
@@ -297,113 +307,67 @@
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-bottom-links {
-      display: flex;
-      gap: 16px;
-    }
-    .footer-bottom-links a {
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .footer-bottom-links a:hover {
-      color: var(--text-dark);
-    }
-
-    /* TOP 버튼 */
-    .btn-top {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--text-black);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      z-index: 99;
-      box-shadow: var(--shadow-md);
-    }
-    .btn-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-    .btn-top:hover {
-      transform: translateY(-4px);
-    }
-    .btn-top svg {
-      width: 24px;
-      height: 24px;
     }
 
     /* ==========================================
        반응형
        ========================================== */
     @media (max-width: 768px) {
-      .nav-links {
+      .nav-links,
+      .nav-actions .btn {
         display: none;
       }
       .nav-hamburger {
         display: flex;
       }
-      .slide-title {
+      .section-title {
+        font-size: 28px;
+      }
+      .hero-center .section-title {
         font-size: 32px;
       }
-      .slide-sub {
-        font-size: 14px;
+      .hero-center .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
       }
-      .slide-desc {
-        font-size: 16px;
+      .content-card {
+        padding: 24px;
       }
-      .slider-prev,
-      .slider-next {
-        width: 40px;
-        height: 40px;
-      }
-      .slider-prev { left: 16px; }
-      .slider-next { right: 16px; }
       .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
       }
       .footer-bottom {
         flex-direction: column;
+        gap: 8px;
         text-align: center;
-      }
-      .btn-top {
-        bottom: 24px;
-        right: 24px;
-        width: 44px;
-        height: 44px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==========================================
-       HEADER
-       ========================================== -->
+  <!-- ========================
+       HEADER / NAV
+       ======================== -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="page_01.html" class="nav-logo">[회사명]</a>
+        <a href="index.html" class="nav-logo">Brand</a>
         <nav class="nav-links">
-          <a href="page_01.html" class="active">Home</a>
+          <a href="page_01.html" class="active">사업/서비스 내용</a>
+          <a href="page_02.html">주요 제공 기능 또는 메뉴</a>
+          <a href="page_03.html">타겟 고객</a>
+          <a href="page_04.html">필요한 페이지 구성 요구사항</a>
+          <a href="page_05.html">Slack 메모의 실제 텍스트 내용</a>
         </nav>
-        <button class="nav-hamburger" aria-label="메뉴">
+        <div class="nav-actions">
+          <a href="page_04.html" class="btn btn-primary">문의하기</a>
+        </div>
+        <button class="nav-hamburger">
           <span></span>
           <span></span>
           <span></span>
@@ -412,206 +376,76 @@
     </div>
   </header>
 
-  <!-- ==========================================
-       MAIN
-       ========================================== -->
+  <!-- ========================
+       MAIN CONTENT
+       ======================== -->
   <main>
 
-    <!-- 섹션 1: 히어로 슬라이더 (3슬라이드 자동 전환) -->
-    <section class="hero-slider">
-      <div class="slider-track">
-        
-        <!-- 슬라이드 1: 핵심 가치 제안 -->
-        <div class="slide active" style="background:var(--bg-dark);">
-          <div class="img-placeholder-fullscreen">
-            <i data-lucide="image"></i>
-          </div>
-          <div class="slide-content">
-            <p class="slide-sub">[보완 필요: 사업 내용 미확인]</p>
-            <h1 class="slide-title">[보완 필요: 핵심 가치 제안 미확인으로<br>작성 불가]</h1>
-          </div>
+    <!-- HERO -->
+    <section class="hero-center">
+      <div class="container">
+        <p class="section-label">서비스 소개</p>
+        <h1 class="section-title">사업/서비스 내용</h1>
+        <p class="section-desc mx-auto">제공되는 사업 또는 서비스에 대한 상세한 정보를 확인하실 수 있습니다.</p>
+        <div class="hero-buttons">
+          <a href="page_02.html" class="btn btn-primary">주요 기능 보기</a>
+          <a href="page_04.html" class="btn btn-secondary">문의하기</a>
         </div>
-
-        <!-- 슬라이드 2: 차별점/신뢰 -->
-        <div class="slide" style="background:var(--bg-dark);">
-          <div class="img-placeholder-fullscreen">
-            <i data-lucide="image"></i>
-          </div>
-          <div class="slide-content">
-            <p class="slide-sub">[보완 필요: 차별점 미확인]</p>
-            <h1 class="slide-title">[보완 필요: 실적 데이터 미확인으로<br>작성 불가]</h1>
-          </div>
-        </div>
-
-        <!-- 슬라이드 3: 전환 유도 -->
-        <div class="slide" style="background:var(--bg-dark);">
-          <div class="img-placeholder-fullscreen">
-            <i data-lucide="image"></i>
-          </div>
-          <div class="slide-content">
-            <p class="slide-sub">[보완 필요: 전환 행동 미확인]</p>
-            <h1 class="slide-title">[보완 필요: 전환 행동 미확인으로<br>작성 불가]</h1>
-          </div>
-        </div>
-
       </div>
+    </section>
 
-      <!-- 도트 네비게이션 -->
-      <div class="slider-dots">
-        <button class="dot active" data-slide="0" aria-label="슬라이드 1"></button>
-        <button class="dot" data-slide="1" aria-label="슬라이드 2"></button>
-        <button class="dot" data-slide="2" aria-label="슬라이드 3"></button>
+    <!-- CONTENT -->
+    <section class="content-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">서비스 개요</h2>
+          <p class="section-desc mx-auto">구체적인 사업 내용 및 서비스 설명이 여기에 표시됩니다.</p>
+        </div>
+        <div class="content-card">
+          <h3>사업/서비스 상세 정보</h3>
+          <p>현재 제공된 자료에는 구체적인 사업 내용이 포함되어 있지 않습니다.</p>
+          <p>추가 정보가 제공되면 이 섹션에 상세한 서비스 설명, 특징, 제공 범위 등이 표시됩니다.</p>
+        </div>
       </div>
-
-      <!-- 좌우 화살표 -->
-      <button class="slider-prev" aria-label="이전 슬라이드">
-        <i data-lucide="chevron-left"></i>
-      </button>
-      <button class="slider-next" aria-label="다음 슬라이드">
-        <i data-lucide="chevron-right"></i>
-      </button>
     </section>
 
   </main>
 
-  <!-- ==========================================
+  <!-- ========================
        FOOTER
-       ========================================== -->
+       ======================== -->
   <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">[회사명]</p>
-          <p class="footer-brand-desc">[보완 필요: 상호 / 대표 / 사업자번호 / 주소 / 전화 / 이메일 — 전체 미제공]</p>
+          <p class="footer-brand-name">Brand</p>
+          <p class="footer-brand-desc">서비스 설명</p>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">메뉴</p>
-          <a href="page_01.html">Home</a>
+          <a href="page_01.html">사업/서비스 내용</a>
+          <a href="page_02.html">주요 제공 기능 또는 메뉴</a>
+          <a href="page_03.html">타겟 고객</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">안내</p>
+          <a href="page_04.html">필요한 페이지 구성 요구사항</a>
+          <a href="page_05.html">Slack 메모의 실제 텍스트 내용</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">고객 지원</p>
+          <a href="page_04.html">문의하기</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 [회사명]. All rights reserved.</span>
-        <div class="footer-bottom-links">
-          <a href="#">개인정보처리방침</a>
-          <a href="#">이용약관</a>
-        </div>
+        <span>© 2025 Brand. All rights reserved.</span>
+        <span>이용약관 | 개인정보처리방침</span>
       </div>
     </div>
   </footer>
 
-  <!-- TOP 버튼 -->
-  <button class="btn-top" aria-label="맨 위로">
-    <i data-lucide="arrow-up"></i>
-  </button>
-
-  <!-- ==========================================
-       JAVASCRIPT
-       ========================================== -->
   <script>
-    // Lucide Icons 초기화
     lucide.createIcons();
-
-    // ========================================
-    // NAV 스크롤 축소
-    // ========================================
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // ========================================
-    // 히어로 슬라이더 (자동 전환 4~5초)
-    // ========================================
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.slider-dots .dot');
-    const prevBtn = document.querySelector('.slider-prev');
-    const nextBtn = document.querySelector('.slider-next');
-    let currentSlide = 0;
-    let autoSlideInterval;
-    const slideDelay = 4500; // 4.5초
-
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-      
-      if (index >= slides.length) currentSlide = 0;
-      if (index < 0) currentSlide = slides.length - 1;
-      
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-    }
-
-    function nextSlide() {
-      currentSlide++;
-      if (currentSlide >= slides.length) currentSlide = 0;
-      showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-      currentSlide--;
-      if (currentSlide < 0) currentSlide = slides.length - 1;
-      showSlide(currentSlide);
-    }
-
-    function startAutoSlide() {
-      autoSlideInterval = setInterval(nextSlide, slideDelay);
-    }
-
-    function stopAutoSlide() {
-      clearInterval(autoSlideInterval);
-    }
-
-    // 도트 클릭
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        currentSlide = index;
-        showSlide(currentSlide);
-        stopAutoSlide();
-        startAutoSlide(); // 재시작
-      });
-    });
-
-    // 화살표 클릭
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      stopAutoSlide();
-      startAutoSlide();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      stopAutoSlide();
-      startAutoSlide();
-    });
-
-    // 자동 전환 시작
-    startAutoSlide();
-
-    // 슬라이더 hover 시 자동 전환 멈춤
-    const sliderSection = document.querySelector('.hero-slider');
-    sliderSection.addEventListener('mouseenter', stopAutoSlide);
-    sliderSection.addEventListener('mouseleave', startAutoSlide);
-
-    // ========================================
-    // TOP 버튼
-    // ========================================
-    const btnTop = document.querySelector('.btn-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
-      } else {
-        btnTop.classList.remove('visible');
-      }
-    });
-
-    btnTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
   </script>
-
 </body>
 </html>
