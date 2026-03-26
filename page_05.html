@@ -1,11 +1,11 @@
-<!-- PAGE: 웹사이트의 목적 -->
+<!-- PAGE: Slack 메모 텍스트 내용 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>웹사이트의 목적</title>
-  <meta name="description" content="웹사이트 제작 목적 및 기대효과 안내">
+  <title>문의하기 | 고객사</title>
+  <meta name="description" content="부담 없이 물어보세요, 빠르게 답변드리겠습니다. 접수 후 영업일 기준 24시간 내 회신을 약속합니다.">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -40,6 +40,20 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
+    input, textarea, select {
+      font-family: 'Pretendard', sans-serif;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 15px;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--text-black);
+    }
+    textarea { resize: vertical; min-height: 120px; }
 
     .container {
       max-width: 1200px;
@@ -47,7 +61,57 @@
       padding: 0 24px;
     }
 
-    /* Navigation */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .microcopy {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 12px;
+    }
+
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
@@ -74,205 +138,215 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      transition: color 0.2s;
     }
-    .nav-links a:hover,
     .nav-links a.active {
       color: var(--text-black);
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Button */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-    .btn-sm {
-      padding: 10px 20px;
-      font-size: 14px;
-    }
-
-    /* Section Commons */
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .section-title {
-      font-size: 36px;
       font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
     }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 640px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* Hero Section */
-    .hero-center {
-      padding: 120px 0 80px;
-      background: var(--bg-white);
-      text-align: center;
-    }
-    .hero-center .section-title {
-      font-size: 42px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-center .section-desc {
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 16px;
-    }
-
-    /* Icon Box */
-    .icon-box {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      margin: 0 auto 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
-    .icon-box svg {
-      width: 28px;
-      height: 28px;
-      color: var(--text-dark);
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-black);
     }
 
-    /* Purpose Grid */
-    .purpose-section {
+    /* HERO SECTION - 섹션 1 */
+    .contact-hero {
+      padding: 120px 0 80px;
+      background: var(--bg-dark);
+      text-align: center;
+      position: relative;
+    }
+    .contact-hero .section-title {
+      color: #FFFFFF;
+      font-size: 42px;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .contact-hero .section-desc {
+      color: rgba(255,255,255,0.7);
+      margin: 0 auto 12px;
+    }
+    .contact-hero .helper-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* FORM SECTION - 섹션 2 */
+    .contact-form-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .form-label .required {
+      color: #E53E3E;
+      margin-left: 2px;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .checkbox-group label {
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      margin-top: 32px;
+    }
+
+    /* CONTACT METHODS - 섹션 3 */
+    .contact-methods {
       padding: 80px 0;
       background: var(--bg-light);
     }
-    .purpose-grid {
+    .methods-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
     }
-    .purpose-card {
-      padding: 40px 32px;
+    .method-card {
+      padding: 32px;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       text-align: center;
     }
-    .purpose-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .purpose-card-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-
-    /* Goals Section */
-    .goals-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .goals-list {
-      max-width: 800px;
-      margin: 48px auto 0;
-    }
-    .goal-item {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .goal-item:last-child {
-      border-bottom: none;
-    }
-    .goal-number {
-      width: 48px;
-      height: 48px;
+    .method-icon {
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: var(--bg-dark);
-      color: #FFFFFF;
+      background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      font-weight: 700;
-      flex-shrink: 0;
+      margin: 0 auto 16px;
     }
-    .goal-content {
-      flex: 1;
+    .method-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
     }
-    .goal-title {
-      font-size: 18px;
+    .method-title {
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .goal-desc {
-      font-size: 15px;
+    .method-desc {
+      font-size: 14px;
       color: var(--text-gray);
+      margin-bottom: 16px;
+    }
+    .method-info {
+      font-size: 15px;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+    .method-placeholder {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* LOCATION - 섹션 4 */
+    .location-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .map-container {
+      width: 100%;
+      height: 400px;
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 48px;
+    }
+    .map-placeholder {
+      text-align: center;
+      color: var(--placeholder-icon);
+    }
+    .map-placeholder svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+    }
+    .map-placeholder p {
+      font-size: 15px;
+    }
+
+    /* TRUST REMINDER - 섹션 5 */
+    .trust-section {
+      padding: 60px 0;
+      background: var(--bg-light);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .trust-item {
+      text-align: center;
+    }
+    .trust-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .trust-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+    .trust-text {
+      font-size: 14px;
+      color: var(--text-dark);
       line-height: 1.6;
     }
 
-    /* CTA Section */
-    .cta-section {
-      padding: 80px 0;
-      background: var(--bg-dark);
-      text-align: center;
-    }
-    .cta-section .section-title {
-      color: #FFFFFF;
-      max-width: 640px;
-      margin: 0 auto 16px;
-    }
-    .cta-section .section-desc {
-      color: rgba(255,255,255,0.7);
-      margin: 0 auto 32px;
-    }
-    .cta-section .btn-primary {
-      background: #FFFFFF;
-      color: var(--text-black);
-      border-color: #FFFFFF;
-    }
-
-    /* Footer */
+    /* FOOTER */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -307,10 +381,6 @@
       font-size: 14px;
       color: var(--text-light);
       padding: 4px 0;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover {
-      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -320,175 +390,279 @@
       color: var(--text-muted);
     }
 
-    /* Responsive */
+    /* TOP BUTTON */
+    .top-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--text-black);
+      color: #FFFFFF;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      z-index: 50;
+    }
+    .top-btn.show {
+      display: flex;
+    }
+    .top-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .nav-toggle { display: flex; }
       .section-title { font-size: 28px; }
-      .hero-center .section-title { font-size: 32px; }
-      .purpose-grid,
-      .goals-grid {
+      .contact-hero .section-title { font-size: 32px; }
+      .methods-grid,
+      .trust-grid {
         grid-template-columns: 1fr;
       }
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 32px;
       }
-      .goal-item {
-        flex-direction: column;
-        text-align: center;
+      .map-container {
+        height: 300px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- HEADER -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">브랜드명</a>
+        <a href="index.html" class="nav-logo">고객사</a>
         <nav class="nav-links">
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 서비스나 제품</a>
-          <a href="page_03.html">필요한 페이지 구성</a>
-          <a href="page_04.html">타겟 고객층</a>
-          <a href="page_05.html" class="active">웹사이트의 목적</a>
+          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_03.html">타겟 고객층</a>
+          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
+          <a href="page_05.html" class="active">Slack 메모 텍스트 내용</a>
         </nav>
-        <div class="nav-actions">
-          <a href="page_03.html" class="btn btn-primary btn-sm">문의하기</a>
-        </div>
+        <button class="nav-toggle" aria-label="메뉴">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- Hero Section -->
-    <section class="hero-center">
+    <!-- 섹션 1: 부담 없이 물어보세요, 빠르게 답변드리겠습니다 -->
+    <section class="contact-hero">
       <div class="container">
-        <p class="section-label">Website Purpose</p>
-        <h1 class="section-title">웹사이트의 목적</h1>
-        <p class="section-desc mx-auto">웹사이트 제작을 통해 달성하고자 하는 핵심 목표와 기대효과를 안내합니다.</p>
+        <h1 class="section-title">부담 없이 물어보세요,<br>빠르게 답변드리겠습니다</h1>
+        <p class="section-desc mx-auto">접수 후 영업일 기준 24시간 내 회신을 약속합니다</p>
+        <p class="helper-text">상담은 무료이며, 문의 내용은 외부에 공유되지 않습니다</p>
       </div>
     </section>
 
-    <!-- Purpose Cards -->
-    <section class="purpose-section">
+    <!-- 섹션 2: 문의 폼 -->
+    <section class="contact-form-section">
+      <div class="container">
+        <div class="form-container">
+          <form>
+            <div class="form-group">
+              <label class="form-label">이름 <span class="required">*</span></label>
+              <input type="text" required placeholder="이름을 입력하세요">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">연락처 <span class="required">*</span></label>
+              <input type="tel" required placeholder="연락받으실 전화번호를 입력하세요">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">이메일</label>
+              <input type="email" placeholder="이메일을 입력하세요 (선택)">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">관심 서비스</label>
+              <select>
+                <option value="">선택하세요 (선택)</option>
+                <option value="service1">서비스 1</option>
+                <option value="service2">서비스 2</option>
+                <option value="service3">서비스 3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">희망 상담 시간대</label>
+              <select>
+                <option value="">선택하세요 (선택)</option>
+                <option value="morning">오전 (09:00~12:00)</option>
+                <option value="afternoon">오후 (12:00~18:00)</option>
+                <option value="anytime">언제든지 편하신 시간에</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">문의 내용 <span class="required">*</span></label>
+              <textarea required placeholder="궁금하신 내용을 자세히 작성해주세요 (최소 50자 권장)"></textarea>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="agree" required>
+              <label for="agree">개인정보 수집 및 이용에 동의합니다 <span class="required">*</span></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">문의 접수하기</button>
+            <p class="microcopy text-center">접수 후 영업일 기준 24시간 내 담당자가 연락드립니다</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 다른 방법으로 연락하기 -->
+    <section class="contact-methods">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">웹사이트 제작 목적</h2>
-          <p class="section-desc mx-auto">온라인 채널을 통한 비즈니스 성장과 고객 소통 강화</p>
+          <h2 class="section-title">전화나 카카오톡으로도<br>상담할 수 있습니다</h2>
         </div>
-        <div class="purpose-grid">
-          <div class="purpose-card">
-            <div class="icon-box">
-              <i data-lucide="users"></i>
+        <div class="methods-grid">
+          <div class="method-card">
+            <div class="method-icon">
+              <i data-lucide="phone"></i>
             </div>
-            <h3 class="purpose-card-title">신뢰성 구축</h3>
-            <p class="purpose-card-desc">전문적인 온라인 채널을 통해 브랜드 신뢰도를 높입니다.</p>
+            <h3 class="method-title">전화 상담</h3>
+            <p class="method-desc">빠른 상담이 필요하시면<br>전화로 문의하세요</p>
+            <p class="method-placeholder">[전화번호 미제공]</p>
+            <p class="method-placeholder">[상담 가능 시간 미제공]</p>
           </div>
-          <div class="purpose-card">
-            <div class="icon-box">
-              <i data-lucide="target"></i>
-            </div>
-            <h3 class="purpose-card-title">고객 유입 확대</h3>
-            <p class="purpose-card-desc">검색 및 온라인 마케팅을 통한 잠재 고객 유입을 증대합니다.</p>
-          </div>
-          <div class="purpose-card">
-            <div class="icon-box">
+
+          <div class="method-card">
+            <div class="method-icon">
               <i data-lucide="message-circle"></i>
             </div>
-            <h3 class="purpose-card-title">소통 채널 확보</h3>
-            <p class="purpose-card-desc">고객과의 원활한 커뮤니케이션 경로를 마련합니다.</p>
+            <h3 class="method-title">카카오톡 상담</h3>
+            <p class="method-desc">채팅으로 편하게<br>상담받으세요</p>
+            <p class="method-placeholder">[카카오톡 채널명 미제공]</p>
+            <a href="#" class="btn btn-secondary" style="margin-top:12px; font-size:14px; padding:10px 20px;">카카오톡으로 상담하기</a>
+          </div>
+
+          <div class="method-card">
+            <div class="method-icon">
+              <i data-lucide="mail"></i>
+            </div>
+            <h3 class="method-title">이메일</h3>
+            <p class="method-desc">자세한 자료와 함께<br>문의하세요</p>
+            <p class="method-placeholder">[이메일 주소 미제공]</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Goals List -->
-    <section class="goals-section">
+    <!-- 섹션 4: 오시는 길 -->
+    <section class="location-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">기대 효과</h2>
-          <p class="section-desc mx-auto">웹사이트를 통해 얻을 수 있는 구체적인 효과</p>
+          <h2 class="section-title">오시는 길</h2>
         </div>
-        <div class="goals-list">
-          <div class="goal-item">
-            <div class="goal-number">01</div>
-            <div class="goal-content">
-              <h3 class="goal-title">브랜드 인지도 향상</h3>
-              <p class="goal-desc">온라인 검색 시 상위 노출을 통해 브랜드 인지도를 높이고 전문성을 강조합니다.</p>
-            </div>
-          </div>
-          <div class="goal-item">
-            <div class="goal-number">02</div>
-            <div class="goal-content">
-              <h3 class="goal-title">고객 문의 증대</h3>
-              <p class="goal-desc">명확한 서비스 정보와 문의 채널 제공으로 고객 문의와 상담 전환율을 높입니다.</p>
-            </div>
-          </div>
-          <div class="goal-item">
-            <div class="goal-number">03</div>
-            <div class="goal-content">
-              <h3 class="goal-title">운영 효율성 개선</h3>
-              <p class="goal-desc">자주 묻는 질문과 정보 제공으로 반복 문의를 줄이고 업무 효율을 향상시킵니다.</p>
-            </div>
-          </div>
-          <div class="goal-item">
-            <div class="goal-number">04</div>
-            <div class="goal-content">
-              <h3 class="goal-title">시장 경쟁력 강화</h3>
-              <p class="goal-desc">전문적인 온라인 채널 보유로 동종 업계 내 경쟁력을 확보합니다.</p>
-            </div>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i data-lucide="map-pin"></i>
+            <p>[주소 미제공 — 지도 임베드 예정]</p>
+            <p style="font-size:13px; margin-top:8px;">[교통안내 미제공]</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- 섹션 5: 신뢰 리마인더 -->
+    <section class="trust-section">
       <div class="container">
-        <h2 class="section-title">웹사이트 제작을 시작하세요</h2>
-        <p class="section-desc">목적에 맞는 최적의 웹사이트를 제작해 드립니다.</p>
-        <a href="page_03.html" class="btn btn-primary">문의하기</a>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <div class="trust-icon">
+              <i data-lucide="smile"></i>
+            </div>
+            <p class="trust-text">상담은 무료입니다</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <i data-lucide="shield"></i>
+            </div>
+            <p class="trust-text">문의 내용은 담당자만 확인하며,<br>외부에 공유되지 않습니다</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <i data-lucide="check-circle"></i>
+            </div>
+            <p class="trust-text">강요나 영업 전화 없이,<br>궁금한 점에만 답변드립니다</p>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">브랜드명</p>
-          <p class="footer-brand-desc">전문적인 웹사이트 제작 서비스</p>
+          <p class="footer-brand-name">고객사</p>
+          <p class="footer-brand-desc">
+            상호: [미제공] | 대표: [미제공]<br>
+            사업자번호: [미제공]<br>
+            주소: [미제공]<br>
+            전화: [미제공] | 이메일: [미제공]
+          </p>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">주요 페이지</p>
+        <div>
+          <p class="footer-col-title">메뉴</p>
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 서비스나 제품</a>
-          <a href="page_04.html">타겟 고객층</a>
+          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_03.html">타겟 고객층</a>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">안내</p>
-          <a href="page_03.html">필요한 페이지 구성</a>
-          <a href="page_05.html">웹사이트의 목적</a>
+          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
+          <a href="page_05.html">Slack 메모 텍스트 내용</a>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">고객 지원</p>
-          <a href="page_03.html">문의하기</a>
+          <p style="font-size:14px; color:var(--text-light);">[전화번호 미제공]</p>
+          <p style="font-size:14px; color:var(--text-light);">[이메일 미제공]</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 브랜드명. All rights reserved.</span>
-        <span>이용약관 | 개인정보처리방침</span>
+        <span>© 2025 고객사. All Rights Reserved.</span>
+        <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
+  <!-- TOP BUTTON -->
+  <button class="top-btn" id="topBtn" aria-label="맨 위로">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
   <script>
     lucide.createIcons();
+
+    // TOP 버튼
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topBtn.classList.add('show');
+      } else {
+        topBtn.classList.remove('show');
+      }
+    });
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
