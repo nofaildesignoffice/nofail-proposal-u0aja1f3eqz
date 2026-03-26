@@ -1,11 +1,11 @@
-<!-- PAGE: 타겟 고객층 -->
+<!-- PAGE: 회사 소개, 연혁 등 기본 정보 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>타겟 고객층</title>
-  <meta name="description" content="타겟 고객층 정보">
+  <title>어쿠스틱 기타 | Guitar Brand - 입문부터 공연용까지</title>
+  <meta name="description" content="따뜻한 울림의 어쿠스틱 기타. 입문자 추천 모델부터 공연용 픽업 장착 모델까지, 사운드 샘플로 비교하고 30일 안심 교환으로 구매하세요.">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -47,49 +47,7 @@
       padding: 0 24px;
     }
 
-    /* NAV */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-    .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-dark);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover {
-      color: var(--text-black);
-    }
-    .nav-links a.active {
-      color: var(--text-black);
-      font-weight: 600;
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* BTN */
+    /* 버튼 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -111,19 +69,13 @@
       color: var(--text-black);
       border: 1px solid var(--border-default);
     }
-    .btn-sm {
-      padding: 10px 20px;
-      font-size: 14px;
-    }
 
-    /* SECTION */
+    /* 섹션 공통 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
     .section-title {
       font-size: 36px;
@@ -136,12 +88,12 @@
       font-size: 16px;
       color: var(--text-gray);
       line-height: 1.7;
-      max-width: 560px;
+      max-width: 640px;
     }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* IMG PLACEHOLDER */
+    /* 이미지 플레이스홀더 */
     .img-placeholder {
       background: var(--placeholder-bg);
       border-radius: var(--radius-sm);
@@ -156,7 +108,7 @@
       height: 48px;
     }
 
-    /* ICON BOX */
+    /* 아이콘 박스 */
     .icon-box {
       width: 48px;
       height: 48px;
@@ -173,68 +125,436 @@
       color: var(--text-dark);
     }
 
-    /* HERO */
-    .hero-center {
-      padding: 120px 0 80px;
+    /* 헤더 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: var(--bg-white);
-      text-align: center;
+      border-bottom: 1px solid var(--border-light);
     }
-    .hero-center .section-title {
-      font-size: 42px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
     }
-    .hero-center .section-desc { 
-      margin-left: auto; 
-      margin-right: auto;
-      margin-bottom: 32px;
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
     }
-
-    /* CONTENT SECTION */
-    .content-section {
-      padding: 80px 0;
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      position: relative;
     }
-    .content-section.bg-light {
-      background: var(--bg-light);
+    .nav-links > li { position: relative; }
+    .nav-links > li > a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      display: block;
+      padding: 8px 0;
     }
-
-    /* EMPTY STATE */
-    .empty-state {
-      text-align: center;
-      padding: 120px 24px;
+    .nav-links > li > a.active {
+      color: var(--text-black);
+      font-weight: 600;
     }
-    .empty-icon {
-      width: 80px;
-      height: 80px;
+    .nav-links .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 8px 0;
+      min-width: 200px;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-links li:hover .dropdown { display: block; }
+    .dropdown a {
+      display: block;
+      padding: 8px 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    .dropdown a:hover { background: var(--bg-light); color: var(--text-black); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    .cart-badge {
+      position: relative;
+    }
+    .cart-badge::after {
+      content: '0';
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      width: 18px;
+      height: 18px;
+      background: var(--text-black);
+      color: white;
       border-radius: 50%;
-      background: var(--bg-light);
+      font-size: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
     }
-    .empty-icon svg {
-      width: 40px;
-      height: 40px;
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-black);
+    }
+
+    /* 히어로 배너 - 풀와이드 */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-banner .img-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    .hero-banner-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+      padding: 0 24px;
+    }
+    .hero-banner-content h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero-banner-content p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+
+    /* 브레드크럼 */
+    .breadcrumb {
+      padding: 20px 0;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .breadcrumb-inner a { color: var(--text-gray); }
+    .breadcrumb-inner a:hover { color: var(--text-black); }
+    .breadcrumb-inner span { color: var(--text-light); }
+
+    /* 필터 바 */
+    .filter-section {
+      padding: 40px 0;
+      background: var(--bg-light);
+    }
+    .filter-bar {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .filter-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    .filter-select {
+      padding: 10px 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      background: var(--bg-white);
+      font-size: 14px;
+      color: var(--text-dark);
+      min-width: 160px;
+    }
+
+    /* 제품 그리드 */
+    .product-grid-section {
+      padding: 60px 0;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .product-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .product-card-image {
+      aspect-ratio: 1;
+    }
+    .product-card-body {
+      padding: 20px;
+    }
+    .product-card-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 6px;
+    }
+    .product-card-feature {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 12px;
+    }
+    .product-card-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .product-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .product-card-meta .stars {
+      display: flex;
+      gap: 2px;
       color: var(--text-muted);
     }
-    .empty-title {
-      font-size: 24px;
+    .product-card-meta .stars svg {
+      width: 14px;
+      height: 14px;
+    }
+    .product-card-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-cart {
+      flex: 1;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      border: 1px solid var(--border-default);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-cart:hover {
+      background: var(--bg-dark);
+      color: white;
+      border-color: var(--bg-dark);
+    }
+
+    /* 추천 카드 섹션 */
+    .recommendation-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .recommendation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .recommendation-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      text-align: center;
+    }
+    .recommendation-card .icon-box {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+    }
+    .recommendation-card .icon-box svg {
+      width: 32px;
+      height: 32px;
+    }
+    .recommendation-card h3 {
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .empty-desc {
-      font-size: 16px;
+    .recommendation-card p {
+      font-size: 15px;
       color: var(--text-gray);
-      max-width: 480px;
-      margin: 0 auto;
       line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .recommendation-card .btn-secondary {
+      width: 100%;
     }
 
-    /* FOOTER */
-    .footer-light {
+    /* 사운드 비교 섹션 */
+    .sound-section {
+      padding: 80px 0;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .video-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .video-placeholder svg {
+      width: 64px;
+      height: 64px;
+      color: var(--placeholder-icon);
+    }
+    .play-button {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-button svg {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+    .video-card-body {
+      padding: 16px;
+    }
+    .video-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 4px;
+    }
+    .video-card-desc {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+    .faq-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-light);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.is-open .faq-question svg {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 24px;
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .faq-item.is-open .faq-answer {
+      display: block;
+    }
+
+    /* CTA 섹션 */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-section .section-title {
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .cta-section .section-desc {
+      margin: 0 auto 32px;
+    }
+
+    /* 푸터 */
+    .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -252,10 +572,13 @@
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .footer-brand-desc {
+    .footer-brand-info {
       font-size: 14px;
       color: var(--text-light);
-      line-height: 1.6;
+      line-height: 1.8;
+    }
+    .footer-brand-info p {
+      margin-bottom: 4px;
     }
     .footer-col-title {
       font-size: 14px;
@@ -268,10 +591,9 @@
       font-size: 14px;
       color: var(--text-light);
       padding: 4px 0;
-      transition: color 0.2s;
     }
     .footer-col a:hover {
-      color: var(--text-dark);
+      color: var(--text-black);
     }
     .footer-bottom {
       display: flex;
@@ -280,16 +602,103 @@
       font-size: 13px;
       color: var(--text-muted);
     }
+    .footer-bottom-links {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-bottom-links a {
+      color: var(--text-muted);
+    }
+    .footer-bottom-links a:hover {
+      color: var(--text-dark);
+    }
 
-    /* RESPONSIVE */
+    /* 플로팅 버튼 */
+    .floating-buttons {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 90;
+    }
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      transition: opacity 0.2s;
+    }
+    .floating-btn:hover {
+      opacity: 0.85;
+    }
+    .floating-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+    .floating-btn.kakao {
+      background: #FEE500;
+      color: #3C1E1E;
+    }
+
+    /* 반응형 */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .section-title { font-size: 28px; }
-      .hero-center .section-title { font-size: 32px; }
-      .footer-grid { 
-        grid-template-columns: 1fr 1fr; 
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-actions {
+        gap: 12px;
+      }
+      
+      .hero-banner {
+        height: 400px;
+      }
+      .hero-banner-content h1 {
+        font-size: 28px;
+      }
+      .hero-banner-content p {
+        font-size: 15px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-select {
+        width: 100%;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .recommendation-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
         gap: 32px;
       }
+      
       .footer-bottom {
         flex-direction: column;
         gap: 12px;
@@ -299,84 +708,571 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- 헤더 -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">브랜드명</a>
-        <nav class="nav-links">
-          <a href="page_01.html">사업 내용 및 제공 서비스/제품</a>
-          <a href="page_02.html">웹사이트 목적</a>
-          <a href="page_03.html">필요한 주요 메뉴 및 페이지 구성</a>
-          <a href="page_04.html" class="active">타겟 고객층</a>
-          <a href="page_05.html">핵심 콘텐츠</a>
+        <a href="index.html" class="nav-logo">Guitar Brand</a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="page_01.html">제공하는 제품/서비스가 무엇인가요?</a></li>
+            <li><a href="page_02.html">주요 타겟 고객층은 누구인가요?</a></li>
+            <li><a href="page_03.html">웹사이트에 꼭 포함되어야 할 메뉴나 기능은 무엇인가요?</a></li>
+            <li><a href="page_04.html" class="active">회사 소개, 연혁 등 기본 정보</a></li>
+            <li><a href="page_05.html">고객 문의 방법 (전화, 이메일, 채팅 등)</a></li>
+          </ul>
         </nav>
         <div class="nav-actions">
-          <a href="page_02.html" class="btn btn-primary btn-sm">문의하기</a>
+          <i data-lucide="search" class="nav-icon"></i>
+          <i data-lucide="user" class="nav-icon"></i>
+          <div class="cart-badge">
+            <i data-lucide="shopping-cart" class="nav-icon"></i>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-
-    <!-- HERO -->
-    <section class="hero-center">
-      <div class="container">
-        <p class="section-label">Target Audience</p>
-        <h1 class="section-title">타겟 고객층</h1>
-        <p class="section-desc">고객층 정보를 확인하세요.</p>
+    <!-- 섹션 1: 히어로 배너 -->
+    <section class="hero-banner">
+      <div class="img-placeholder">
+        <i data-lucide="image"></i>
+      </div>
+      <div class="hero-banner-content">
+        <h1>따뜻한 울림이 필요한 순간, 어쿠스틱 기타</h1>
+        <p>캠핑장에서, 방 안에서, 거리 버스킹까지. 전원 없이도 어디서든 연주할 수 있는 기타예요.</p>
       </div>
     </section>
 
-    <!-- EMPTY STATE -->
-    <section class="content-section bg-light">
+    <!-- 브레드크럼 -->
+    <section class="breadcrumb">
       <div class="container">
-        <div class="empty-state">
-          <div class="empty-icon">
-            <i data-lucide="users"></i>
-          </div>
-          <h2 class="empty-title">타겟 고객층 정보 준비 중</h2>
-          <p class="empty-desc">구체적인 타겟 고객 정보가 제공되면 이 영역에 고객층 세그먼트, 특성, 니즈 등의 콘텐츠가 표시됩니다.</p>
+        <div class="breadcrumb-inner">
+          <a href="index.html">HOME</a>
+          <span>/</span>
+          <a href="page_01.html">제품</a>
+          <span>/</span>
+          <span>어쿠스틱 기타</span>
         </div>
+      </div>
+    </section>
+
+    <!-- 섹션 2: 필터 + 제품 그리드 -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">경험과 예산에 맞게 골라보세요</h2>
+        </div>
+        <div class="filter-bar" style="margin-top: 32px;">
+          <div class="filter-group">
+            <label class="filter-label">바디 타입</label>
+            <select class="filter-select">
+              <option>전체</option>
+              <option>드레드넛</option>
+              <option>OM</option>
+              <option>컷어웨이</option>
+              <option>클래식</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">가격대</label>
+            <select class="filter-select">
+              <option>전체</option>
+              <option>30만원 이하</option>
+              <option>30~50만원</option>
+              <option>50~100만원</option>
+              <option>100만원 이상</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">톤우드</label>
+            <select class="filter-select">
+              <option>전체</option>
+              <option>스프루스</option>
+              <option>시더</option>
+              <option>마호가니</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">용도</label>
+            <select class="filter-select">
+              <option>전체</option>
+              <option>입문</option>
+              <option>연습</option>
+              <option>공연</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-grid-section">
+      <div class="container">
+        <div class="product-grid">
+          <!-- 제품 카드 1 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">입문자 추천 드레드넛 바디</p>
+              <div class="product-card-price">300,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(24)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 2 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">OM 바디 핑거스타일 적합</p>
+              <div class="product-card-price">450,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(18)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 3 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">컷어웨이 픽업 장착 공연용</p>
+              <div class="product-card-price">680,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(32)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 4 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">탑솔리드 중급자용</p>
+              <div class="product-card-price">550,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(41)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 5 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">클래식 나일론 현</p>
+              <div class="product-card-price">380,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(15)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 6 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">12현 풀사운드</p>
+              <div class="product-card-price">720,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(9)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 7 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">트래블 사이즈 휴대용</p>
+              <div class="product-card-price">280,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(27)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제품 카드 8 -->
+          <div class="product-card">
+            <div class="product-card-image img-placeholder" style="aspect-ratio:1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-name">어쿠스틱 기타 모델명</h3>
+              <p class="product-card-feature">올솔리드 프리미엄</p>
+              <div class="product-card-price">1,200,000원</div>
+              <div class="product-card-meta">
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <span>(12)</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn-cart">
+                  <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i>
+                  장바구니
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 타겟별 추천 -->
+    <section class="recommendation-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">어쿠스틱 기타, 이런 분께 추천해요</h2>
+        </div>
+        <div class="recommendation-grid">
+          <!-- 추천 1 -->
+          <div class="recommendation-card">
+            <div class="icon-box">
+              <i data-lucide="user"></i>
+            </div>
+            <h3>처음 기타를 배우는 입문자</h3>
+            <p>30만원대 드레드넛 바디, 부드러운 현 세팅, 입문 패키지 포함 모델 추천</p>
+            <a href="#" class="btn btn-secondary">추천 모델 보기</a>
+          </div>
+
+          <!-- 추천 2 -->
+          <div class="recommendation-card">
+            <div class="icon-box">
+              <i data-lucide="music"></i>
+            </div>
+            <h3>핑거스타일이나 작곡을 즐기는 중급자</h3>
+            <p>OM/그랜드 오디토리엄 바디, 탑솔리드 이상, 밸런스 좋은 톤 모델 추천</p>
+            <a href="#" class="btn btn-secondary">추천 모델 보기</a>
+          </div>
+
+          <!-- 추천 3 -->
+          <div class="recommendation-card">
+            <div class="icon-box">
+              <i data-lucide="mic"></i>
+            </div>
+            <h3>무대나 녹음에 사용할 연주자</h3>
+            <p>컷어웨이 + 픽업 장착 모델, 앰프 연결 가능 모델 추천</p>
+            <a href="#" class="btn btn-secondary">추천 모델 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 4: 사운드 비교 -->
+    <section class="sound-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">사운드로 직접 비교해보세요</h2>
+          <p class="section-desc mx-auto">가격대별 대표 모델의 연주 영상을 들어보고, 내 귀에 맞는 소리를 찾아보세요</p>
+        </div>
+        <div class="video-grid">
+          <!-- 비디오 카드 1 -->
+          <div class="video-card">
+            <div class="video-placeholder">
+              <i data-lucide="film"></i>
+              <div class="play-button">
+                <i data-lucide="play"></i>
+              </div>
+            </div>
+            <div class="video-card-body">
+              <p class="video-card-title">입문용 드레드넛 사운드 샘플</p>
+              <p class="video-card-desc">30만원대 모델</p>
+            </div>
+          </div>
+
+          <!-- 비디오 카드 2 -->
+          <div class="video-card">
+            <div class="video-placeholder">
+              <i data-lucide="film"></i>
+              <div class="play-button">
+                <i data-lucide="play"></i>
+              </div>
+            </div>
+            <div class="video-card-body">
+              <p class="video-card-title">중급 OM 바디 사운드 샘플</p>
+              <p class="video-card-desc">50만원대 모델</p>
+            </div>
+          </div>
+
+          <!-- 비디오 카드 3 -->
+          <div class="video-card">
+            <div class="video-placeholder">
+              <i data-lucide="film"></i>
+              <div class="play-button">
+                <i data-lucide="play"></i>
+              </div>
+            </div>
+            <div class="video-card-body">
+              <p class="video-card-title">공연용 픽업 장착 모델 샘플</p>
+              <p class="video-card-desc">70만원대 모델</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 5: FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">어쿠스틱 기타 구매 전, 자주 묻는 질문</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item is-open">
+            <button class="faq-question">
+              초보자인데 어떤 사이즈를 골라야 하나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              성인 기준 드레드넛(Dreadnought) 사이즈가 가장 보편적이에요. 체구가 작으시다면 OM이나 그랜드 오디토리엄 사이즈를 추천드려요. 카카오톡으로 키와 손 크기를 알려주시면 1:1로 추천해드릴게요.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              합판과 솔리드(단판)의 차이가 뭔가요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              합판은 여러 겹의 나무를 압착한 것, 솔리드는 통나무를 얇게 깎아 만든 거예요. 솔리드가 울림이 풍부하고 시간이 지날수록 소리가 좋아져요. 입문용은 탑솔리드(상판만 단판)부터 시작하는 걸 추천해요.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              온라인으로 사서 소리가 마음에 안 들면 어떻게 하나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              30일 이내 안심 교환 정책이 있어요. 사이즈나 톤이 기대와 다르면 교환해드려요. 반송비만 부담해주시면 돼요.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              기타 외에 뭘 같이 사야 하나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              튜너, 카포, 여분의 현, 기타 케이스가 기본이에요. 입문 올인원 패키지를 선택하시면 다 포함되어 있어서 편해요.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 6: CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">어떤 어쿠스틱 기타가 나에게 맞을지 상담받고 싶다면</h2>
+        <p class="section-desc mx-auto">카카오톡이나 문의 폼으로 편하게 물어보세요.</p>
+        <a href="page_05.html" class="btn btn-primary">문의하기</a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer-light">
+  <!-- 푸터 -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">브랜드명</p>
-          <p class="footer-brand-desc">브랜드 소개</p>
+          <p class="footer-brand-name">Guitar Brand</p>
+          <div class="footer-brand-info">
+            <p>상호: [보완 필요: 상호명]</p>
+            <p>대표: [보완 필요: 대표자명]</p>
+            <p>사업자번호: [보완 필요]</p>
+            <p>주소: [보완 필요]</p>
+            <p>전화: [보완 필요]</p>
+            <p>이메일: [보완 필요]</p>
+          </div>
         </div>
         <div>
           <p class="footer-col-title">메뉴</p>
-          <a href="page_01.html">사업 내용</a>
-          <a href="page_02.html">목적</a>
-          <a href="page_03.html">구성</a>
+          <a href="page_01.html">제공하는 제품/서비스가 무엇인가요?</a>
+          <a href="page_02.html">주요 타겟 고객층은 누구인가요?</a>
+          <a href="page_03.html">웹사이트에 꼭 포함되어야 할 메뉴나 기능은 무엇인가요?</a>
         </div>
         <div>
-          <p class="footer-col-title">정보</p>
-          <a href="page_04.html">타겟 고객층</a>
-          <a href="page_05.html">핵심 콘텐츠</a>
+          <p class="footer-col-title">안내</p>
+          <a href="page_04.html">회사 소개, 연혁 등 기본 정보</a>
+          <a href="page_05.html">고객 문의 방법 (전화, 이메일, 채팅 등)</a>
         </div>
         <div>
           <p class="footer-col-title">고객 지원</p>
-          <a href="page_02.html">문의하기</a>
+          <a href="page_05.html">문의하기</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 브랜드명. All rights reserved.</span>
-        <span>이용약관 | 개인정보처리방침</span>
+        <span>© 2025 Guitar Brand. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- 플로팅 버튼 -->
+  <div class="floating-buttons">
+    <button class="floating-btn kakao" title="카카오톡 상담">
+      <i data-lucide="message-circle"></i>
+    </button>
+    <button class="floating-btn" id="topBtn" title="맨 위로">
+      <i data-lucide="arrow-up"></i>
+    </button>
+  </div>
+
   <script>
     lucide.createIcons();
+
+    // FAQ 아코디언
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('is-open');
+        
+        // 모든 FAQ 닫기
+        document.querySelectorAll('.faq-item').forEach(faq => {
+          faq.classList.remove('is-open');
+        });
+        
+        // 클릭한 항목만 토글
+        if (!isOpen) {
+          item.classList.add('is-open');
+        }
+      });
+    });
+
+    // TOP 버튼
+    const topBtn = document.getElementById('topBtn');
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
