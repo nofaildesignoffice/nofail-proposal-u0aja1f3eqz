@@ -1,91 +1,926 @@
-안녕하세요. 현재 제공된 자료를 분석한 결과, **기획안 작성이 불가능**합니다.
+<!-- PAGE: 사업/서비스 내용 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고객사 - 메인</title>
+  <meta name="description" content="고객사의 공식 홈페이지입니다. 서비스 안내, 고객 후기, 상담 문의를 확인하세요.">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
----
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
 
-## 🔴 현재 상황
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-제공된 "페이지 목록"은 실제 사이트맵이 아니라 **사이트맵 생성을 위한 질문 항목**입니다:
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
 
-```
-[1] 사업/서비스 내용
-[2] 주요 제공 서비스나 제품
-[3] 필요한 페이지 구성 (회사소개, 서비스 소개, 문의 등)
-[4] 타겟 고객층
-[5] 웹사이트의 목적
-```
+    /* 섹션 공통 */
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
-이것은 "어떤 페이지를 만들까요?"라는 질문이지, 실제 페이지가 아닙니다.
+    /* 이미지 플레이스홀더 */
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+    .img-placeholder-fullscreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-placeholder-fullscreen svg {
+      color: var(--placeholder-icon);
+      width: 64px;
+      height: 64px;
+    }
 
----
+    /* 아이콘 박스 */
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
 
-## ⛔ 기획 불가 사유
+    /* ==========================================
+       헤더
+       ========================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .nav-links a.active {
+      color: var(--text-black);
+      font-weight: 600;
+    }
 
-### 부재 정보
-- **회사명**: 없음 (브랜드명 미확정)
-- **업종**: 미특정
-- **서비스/제품**: 구체 내용 없음
-- **타겟 고객**: 미정의
-- **고객 인터뷰**: 음성파일/텍스트 미제출
-- **회사 자료**: 미제출
-- **확정 사이트맵**: 없음 (질문 항목만 존재)
+    /* ==========================================
+       섹션 1: 히어로 슬라이더
+       ========================================== */
+    .hero-slider {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .slider-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      background: var(--bg-dark);
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .slide-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      max-width: 800px;
+    }
+    .slide-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
 
-### 절대 규칙 위배 위험
-> "구체적 사실은 절대 창작하지 않는다"
+    /* 슬라이더 도트 */
+    .slider-dots {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 12px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: background 0.3s;
+    }
+    .dot.active {
+      background: #FFFFFF;
+    }
 
-현재 상태에서 기획안을 작성하면:
-- 회사명 창작
-- 서비스명 창작
-- 제품 스펙 창작
-- 고객 후기 창작
-- 인증/수상 창작
+    /* 슬라이더 화살표 */
+    .slider-prev,
+    .slider-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .slider-prev:hover,
+    .slider-next:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .slider-prev {
+      left: 24px;
+    }
+    .slider-next {
+      right: 24px;
+    }
+    .slider-prev svg,
+    .slider-next svg {
+      width: 24px;
+      height: 24px;
+      color: #FFFFFF;
+    }
 
-→ **100% 허구 기획서**가 됩니다.
+    /* ==========================================
+       섹션 2: 타겟 공감 (4개 카드)
+       ========================================== */
+    .target-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .target-card {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+    .target-card .icon-box {
+      margin: 0 auto 20px;
+      width: 64px;
+      height: 64px;
+    }
+    .target-card .icon-box svg {
+      width: 28px;
+      height: 28px;
+    }
+    .target-card-text {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
 
----
+    /* ==========================================
+       섹션 3: 서비스 카드
+       ========================================== */
+    .service-section {
+      padding: 80px 0;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .service-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .service-card-body {
+      padding: 24px;
+    }
+    .service-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .service-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
 
-## ✅ 기획 진행을 위한 필수 정보
+    /* ==========================================
+       섹션 4: 차별점 (3단 그리드)
+       ========================================== */
+    .principle-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .principle-item {
+      text-align: center;
+    }
+    .principle-item .icon-box {
+      margin: 0 auto 20px;
+      width: 64px;
+      height: 64px;
+    }
+    .principle-item .icon-box svg {
+      width: 28px;
+      height: 28px;
+    }
+    .principle-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .principle-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
 
-최소한 다음 정보가 필요합니다:
+    /* ==========================================
+       섹션 5: 이용 절차 (타임라인)
+       ========================================== */
+    .process-section {
+      padding: 80px 0;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .step-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step-icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
 
-### 1. 기본 정보
-```
-- 회사명/브랜드명: ?
-- 업종: ?
-- 주요 서비스/제품: ?
-- 타겟 고객: ?
-```
+    /* ==========================================
+       섹션 6: CTA
+       ========================================== */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+      text-align: center;
+    }
+    .cta-section .section-title {
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .cta-section .section-desc {
+      margin: 0 auto 32px;
+    }
 
-### 2. 사이트맵 확정
-```
-예시:
-- 홈 (P01-home.html)
-- 회사소개 (P02-about.html)
-- 서비스 소개 (P03-service.html)
-- 포트폴리오/사례 (P04-portfolio.html)
-- 문의/견적 (P05-contact.html)
-```
+    /* ==========================================
+       푸터
+       ========================================== */
+    .footer-light {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
 
-### 3. 고객 인터뷰 또는 메모
-```
-- 고객 음성 파일, 또는
-- Slack 메모 텍스트, 또는
-- 고객 요구사항 정리 문서
-```
+    /* TOP 버튼 */
+    .top-button {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--text-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 99;
+    }
+    .top-button.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .top-button svg {
+      width: 24px;
+      height: 24px;
+      color: #FFFFFF;
+    }
 
----
+    /* ==========================================
+       반응형
+       ========================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      
+      .section-title { font-size: 28px; }
+      
+      .slide-title { font-size: 32px; }
+      .slide-sub { font-size: 16px; }
+      
+      .target-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .principle-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      
+      .slider-prev,
+      .slider-next {
+        width: 40px;
+        height: 40px;
+      }
+      .slider-prev { left: 16px; }
+      .slider-next { right: 16px; }
+    }
+  </style>
+</head>
+<body>
 
-## 📋 다음 단계
+  <!-- 헤더 -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="page_01.html" class="nav-logo">고객사</a>
+        <nav class="nav-links">
+          <a href="page_01.html" class="active">사업/서비스 내용</a>
+          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_03.html">타겟 고객층</a>
+          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
+          <a href="page_05.html">Slack 메모 텍스트 내용</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-위 정보를 제공해 주시면:
+  <main>
 
-1. **DNA 카드** 작성
-2. **파일 00** (사이트맵 + 헤더/푸터)
-3. **파일 01~N** (각 페이지 기획서)
-4. **와이어프레임 HTML** 일괄 생성
+    <!-- 섹션 1: 히어로 슬라이더 (3장) -->
+    <section class="hero-slider">
+      <div class="slider-track">
+        
+        <!-- 슬라이드 1 -->
+        <div class="slide active">
+          <div class="img-placeholder-fullscreen">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <h1 class="slide-title">고객의 일상을 바꾸는 확실한 한 가지</h1>
+            <p class="slide-sub">직접 경험하면 다시 돌아가기 어렵습니다</p>
+          </div>
+        </div>
 
-순서로 즉시 진행하겠습니다.
+        <!-- 슬라이드 2 -->
+        <div class="slide">
+          <div class="img-placeholder-fullscreen">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <h1 class="slide-title">까다로운 고객이 다시 찾는 이유</h1>
+            <p class="slide-sub">결과로 증명하는 서비스를 제공합니다</p>
+          </div>
+        </div>
 
----
+        <!-- 슬라이드 3 -->
+        <div class="slide">
+          <div class="img-placeholder-fullscreen">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <h1 class="slide-title">지금 바로 상담받아 보세요</h1>
+            <p class="slide-sub">부담 없이 궁금한 점을 물어보세요</p>
+          </div>
+        </div>
 
-현재는 **"사업/서비스 내용이 무엇인가요?"**라는 질문에 답할 자료가 없는 상태입니다.  
-기획 진행을 위해 위 필수 정보를 먼저 제공해 주세요.
+      </div>
+
+      <!-- 도트 네비게이션 -->
+      <div class="slider-dots">
+        <button class="dot active" data-slide="0"></button>
+        <button class="dot" data-slide="1"></button>
+        <button class="dot" data-slide="2"></button>
+      </div>
+
+      <!-- 좌우 화살표 -->
+      <button class="slider-prev"><i data-lucide="chevron-left"></i></button>
+      <button class="slider-next"><i data-lucide="chevron-right"></i></button>
+    </section>
+
+    <!-- 섹션 2: 타겟 공감 -->
+    <section class="target-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">혹시 이런 고민, 하고 계신가요?</h2>
+          <p class="section-desc mx-auto">많은 분들이 같은 문제로 저희를 찾아오셨습니다</p>
+        </div>
+        <div class="target-grid">
+          <div class="target-card">
+            <div class="icon-box">
+              <i data-lucide="search"></i>
+            </div>
+            <p class="target-card-text">어디에 맡겨야 할지 몰라 검색만 반복하고 계신 분</p>
+          </div>
+          <div class="target-card">
+            <div class="icon-box">
+              <i data-lucide="alert-circle"></i>
+            </div>
+            <p class="target-card-text">한 번 실패한 경험이 있어 신중해진 분</p>
+          </div>
+          <div class="target-card">
+            <div class="icon-box">
+              <i data-lucide="check-circle"></i>
+            </div>
+            <p class="target-card-text">가격은 합리적이면서 품질은 확실한 곳을 찾는 분</p>
+          </div>
+          <div class="target-card">
+            <div class="icon-box">
+              <i data-lucide="clock"></i>
+            </div>
+            <p class="target-card-text">빠르게 상담받고 싶은데 연락이 안 되는 곳에 지친 분</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 서비스 한눈에 보기 -->
+    <section class="service-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">필요한 서비스를 바로 확인하세요</h2>
+          <p class="section-desc mx-auto">각 서비스별 상세 내용을 안내드립니다</p>
+        </div>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="service-card-body">
+              <h3 class="service-card-title">서비스 카테고리 A</h3>
+              <p class="service-card-desc">서비스 설명 텍스트</p>
+              <a href="page_02.html" class="btn btn-secondary" style="padding:10px 20px; font-size:14px;">자세히 보기</a>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="service-card-body">
+              <h3 class="service-card-title">서비스 카테고리 B</h3>
+              <p class="service-card-desc">서비스 설명 텍스트</p>
+              <a href="page_02.html" class="btn btn-secondary" style="padding:10px 20px; font-size:14px;">자세히 보기</a>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="service-card-body">
+              <h3 class="service-card-title">서비스 카테고리 C</h3>
+              <p class="service-card-desc">서비스 설명 텍스트</p>
+              <a href="page_02.html" class="btn btn-secondary" style="padding:10px 20px; font-size:14px;">자세히 보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 4: 고객이 다시 찾는 이유 -->
+    <section class="principle-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">한 번 경험하면 다른 곳은 눈에 들어오지 않습니다</h2>
+          <p class="section-desc mx-auto">저희가 고집하는 3가지 원칙이 있습니다</p>
+        </div>
+        <div class="principle-grid">
+          <div class="principle-item">
+            <div class="icon-box">
+              <i data-lucide="message-circle"></i>
+            </div>
+            <h3 class="principle-title">정직한 상담</h3>
+            <p class="principle-desc">필요하지 않은 것은 권하지 않습니다. 고객 상황에 맞는 솔루션만 제안합니다</p>
+          </div>
+          <div class="principle-item">
+            <div class="icon-box">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3 class="principle-title">빠른 응답</h3>
+            <p class="principle-desc">문의 접수 후 당일 내 회신을 원칙으로 합니다</p>
+          </div>
+          <div class="principle-item">
+            <div class="icon-box">
+              <i data-lucide="shield"></i>
+            </div>
+            <h3 class="principle-title">결과 책임</h3>
+            <p class="principle-desc">서비스 완료 후에도 불편한 점이 있으면 끝까지 해결합니다</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 5: 이용 절차 안내 -->
+    <section class="process-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">처음이어도 걱정 마세요, 4단계로 끝납니다</h2>
+          <p class="section-desc mx-auto">복잡한 절차 없이 편하게 시작할 수 있습니다</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step">
+            <p class="step-number">STEP 1</p>
+            <div class="step-icon-wrap">
+              <i data-lucide="file-text"></i>
+            </div>
+            <h3 class="step-title">문의 접수</h3>
+            <p class="step-desc">홈페이지 문의 폼 또는 전화로 상담 요청</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 2</p>
+            <div class="step-icon-wrap">
+              <i data-lucide="user-check"></i>
+            </div>
+            <h3 class="step-title">맞춤 상담</h3>
+            <p class="step-desc">고객 상황을 파악하고 적합한 방법을 안내</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 3</p>
+            <div class="step-icon-wrap">
+              <i data-lucide="settings"></i>
+            </div>
+            <h3 class="step-title">서비스 진행</h3>
+            <p class="step-desc">합의된 내용에 따라 서비스 실행</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 4</p>
+            <div class="step-icon-wrap">
+              <i data-lucide="check-circle"></i>
+            </div>
+            <h3 class="step-title">완료 및 사후 관리</h3>
+            <p class="step-desc">서비스 완료 후에도 추가 문의 가능</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 6: Contact Us -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">궁금한 점이 있으시면 편하게 물어보세요</h2>
+        <p class="section-desc mx-auto">상담은 부담 없이, 답변은 빠르게 드리겠습니다</p>
+        <a href="page_04.html" class="btn btn-primary">문의하기</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer-light">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">고객사</p>
+          <p class="footer-brand-desc">회사 정보는 확보 후 업데이트 예정</p>
+        </div>
+        <div>
+          <p class="footer-col-title">메뉴</p>
+          <a href="page_01.html">사업/서비스 내용</a>
+          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_03.html">타겟 고객층</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객 지원</p>
+          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
+          <a href="page_05.html">Slack 메모 텍스트 내용</a>
+        </div>
+        <div>
+          <p class="footer-col-title">문의</p>
+          <a href="#">전화번호 미제공</a>
+          <a href="#">이메일 미제공</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 고객사. All Rights Reserved.</span>
+        <span>개인정보처리방침 | 이용약관</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOP 버튼 -->
+  <button class="top-button" id="topButton">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <script>
+    lucide.createIcons();
+
+    // 슬라이더 자동 전환 (4.5초 간격)
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      currentSlide = (n + totalSlides) % totalSlides;
+      
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 4500);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    // 화살표 버튼
+    document.querySelector('.slider-prev').addEventListener('click', () => {
+      prevSlide();
+      resetAutoSlide();
+    });
+
+    document.querySelector('.slider-next').addEventListener('click', () => {
+      nextSlide();
+      resetAutoSlide();
+    });
+
+    // 도트 버튼
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        resetAutoSlide();
+      });
+    });
+
+    // 자동 전환 시작
+    startAutoSlide();
+
+    // TOP 버튼
+    const topButton = document.getElementById('topButton');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topButton.classList.add('visible');
+      } else {
+        topButton.classList.remove('visible');
+      }
+    });
+
+    topButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
