@@ -1,75 +1,757 @@
-죄송합니다. 현재 상태에서는 와이어프레임을 생성할 수 없습니다.
+<!-- PAGE: 고객 문의 방법 (전화, 이메일, 채팅 등) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고객 문의 방법 | Guitar Brand - 기타 전문 쇼핑몰</title>
+  <meta name="description" content="Guitar Brand 고객 문의 방법 안내. 전화, 이메일, 카카오톡 채팅으로 기타 추천 상담 및 주문 문의를 받습니다.">
+  <meta name="keywords" content="기타 쇼핑몰, 통기타 추천, 일렉기타 구매, 초보자 기타, 기타 입문, 국산 기타, 고객 문의">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ 와이어프레임 생성 불가 — 기획 내용 부재
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
 
-[문제 상황]
-제공된 [현재 페이지 정보]에 기획 내용(섹션 구성, 
-헤드카피, 서브카피, UI 지시사항 등)이 포함되어 
-있지 않습니다.
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-[필요한 정보]
-페이지 "웹사이트에 포함되어야 할 핵심 콘텐츠"의 
-기획안이 필요합니다. 기획안에는 아래 항목이 
-포함되어야 합니다:
+    /* 헤더 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links > li {
+      position: relative;
+    }
+    .nav-links > li > a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      padding: 8px 0;
+      display: block;
+    }
+    .nav-links > li > a.active {
+      color: var(--text-black);
+      font-weight: 600;
+    }
+    .nav-links > li:hover > a {
+      color: var(--text-black);
+    }
+    .nav-utils {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-utils button {
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-utils svg {
+      width: 22px;
+      height: 22px;
+    }
+    .cart-badge {
+      position: relative;
+    }
+    .cart-badge::after {
+      content: '0';
+      position: absolute;
+      top: -4px;
+      right: -8px;
+      background: var(--text-black);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu-btn {
+      display: none;
+    }
 
-✓ 섹션 구성 (섹션 1, 섹션 2, ... N)
-✓ 각 섹션의 목적
-✓ UI 지시사항 (레이아웃, 열 수, 슬라이드 수 등)
-✓ 헤드카피 / 서브카피
-✓ CTA 버튼 텍스트
-✓ 콘텐츠 항목 (카드, 리스트 등)
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
 
-[현재 제공된 정보]
-- 페이지 ID: 5
-- 페이지명: 웹사이트에 포함되어야 할 핵심 콘텐츠
-- 파일명: page_05.html
-- GNB 구조: 5개 메뉴 (하지만 실제 사이트맵 아님)
+    /* 섹션 공통 */
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
-[참고]
-전달하신 "페이지 목록 5개"는 실제 웹사이트 메뉴가 
-아니라, 사이트맵 생성을 위해 필요한 추가 정보 
-항목의 제목입니다:
-- "사업 내용 및 제공 서비스/제품"
-- "웹사이트 목적"
-- "필요한 주요 메뉴 및 페이지 구성"
-- "타겟 고객층"
-- "웹사이트에 포함되어야 할 핵심 콘텐츠"
+    /* 이미지 플레이스홀더 */
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    /* 아이콘 박스 */
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin: 0 auto 20px;
+    }
+    .icon-box svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
 
-[다음 단계]
-1. 확정 사이트맵 확보
-2. 고객 인터뷰 스크립트 또는 회사 자료 확보
-3. 기획안 생성 (DNA 카드 → 파일 00 → 파일 01~N)
-4. 와이어프레임 생성
+    /* Hero */
+    .hero-dark {
+      padding: 120px 0 80px;
+      background: var(--bg-dark);
+      text-align: center;
+    }
+    .hero-dark .section-title { 
+      color: #FFFFFF; 
+      font-size: 42px; 
+      max-width: 700px; 
+      margin: 0 auto 16px; 
+    }
+    .hero-dark .section-desc { 
+      color: rgba(255,255,255,0.6); 
+      margin: 0 auto; 
+    }
 
-위 자료를 제공해주시면, 전체 기획안을 생성한 후 
-각 페이지의 와이어프레임을 순차적으로 출력하겠습니다.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
+    /* 문의 방법 카드 */
+    .contact-methods {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .contact-card {
+      padding: 40px 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .contact-card:hover {
+      border-color: var(--border-default);
+    }
+    .contact-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .contact-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .contact-info {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 20px;
+    }
 
-**해결 방법:**
+    /* 상담 시간 */
+    .hours-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .hours-content {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hours-list {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hours-item {
+      padding: 20px;
+      background: var(--bg-white);
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hours-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-black);
+    }
+    .hours-time {
+      font-size: 15px;
+      color: var(--text-gray);
+    }
 
-아래 정보 중 최소 1가지를 제공해주세요:
+    /* FAQ 프리뷰 */
+    .faq-preview {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .faq-list {
+      max-width: 720px;
+      margin: 48px auto 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      text-align: left;
+    }
+    .faq-question svg { 
+      width: 20px; 
+      height: 20px; 
+      color: var(--text-light); 
+      flex-shrink: 0; 
+      transition: transform 0.2s; 
+    }
+    .faq-item.is-open .faq-question svg { 
+      transform: rotate(180deg); 
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .faq-item.is-open .faq-answer { 
+      display: block; 
+    }
 
-1. **확정 사이트맵** (예시)
-   ```
-   - 홈
-   - 회사소개
-     ㄴ 대표 인사말
-     ㄴ 연혁
-   - 제품/서비스
-   - 고객지원
-   - 문의하기
-   ```
+    /* CTA */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+      text-align: center;
+    }
+    .cta-section .section-title {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 16px;
+    }
+    .cta-section .section-desc {
+      margin: 0 auto 32px;
+    }
+    .microcopy {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 12px;
+    }
 
-2. **고객 인터뷰 텍스트** 또는 **Slack 대화 내용**
-   - 사업 내용, 제품, 타겟 고객, 홈페이지 목적 등
+    /* 푸터 */
+    .footer {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+    }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-bottom-links a {
+      margin-left: 16px;
+    }
+    .footer-bottom-links a:hover {
+      color: var(--text-gray);
+    }
 
-3. **회사 자료**
-   - 소개서, 카탈로그, 기존 홈페이지 URL 등
+    /* 플로팅 버튼 */
+    .floating-btns {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 90;
+    }
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--text-black);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      transition: opacity 0.2s;
+    }
+    .floating-btn:hover {
+      opacity: 0.85;
+    }
+    .floating-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+    .floating-kakao {
+      background: #FEE500;
+      color: #3C1E1E;
+    }
 
-자료가 준비되면 즉시 전체 기획안을 생성하고, 각 페이지의 와이어프레임을 출력하겠습니다.
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn {
+        display: block;
+        color: var(--text-dark);
+      }
+      .mobile-menu-btn svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .section-title { font-size: 28px; }
+      .hero-dark .section-title { font-size: 32px; }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .floating-btns {
+        right: 16px;
+        bottom: 16px;
+      }
+      .floating-btn {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Guitar Brand</a>
+        <ul class="nav-links">
+          <li><a href="page_01.html">제공하는 제품/서비스가 무엇인가요?</a></li>
+          <li><a href="page_02.html">주요 타겟 고객층은 누구인가요?</a></li>
+          <li><a href="page_03.html">웹사이트에 꼭 포함되어야 할 메뉴나 기능은 무엇인가요?</a></li>
+          <li><a href="page_04.html">회사 소개, 연혁 등 기본 정보</a></li>
+          <li><a href="page_05.html" class="active">고객 문의 방법 (전화, 이메일, 채팅 등)</a></li>
+        </ul>
+        <div class="nav-utils">
+          <button aria-label="검색"><i data-lucide="search"></i></button>
+          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button aria-label="장바구니" class="cart-badge"><i data-lucide="shopping-cart"></i></button>
+          <button class="mobile-menu-btn" aria-label="메뉴"><i data-lucide="menu"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero-dark">
+      <div class="container">
+        <span class="section-label" style="color:rgba(255,255,255,0.5);">CONTACT</span>
+        <h1 class="section-title">궁금한 점이 있으신가요?</h1>
+        <p class="section-desc mx-auto">전화, 이메일, 카카오톡 채팅으로 문의하세요. 기타 추천부터 주문, AS까지 친절하게 답변드려요.</p>
+      </div>
+    </section>
+
+    <!-- 문의 방법 -->
+    <section class="contact-methods">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-label">HOW TO REACH US</span>
+          <h2 class="section-title">3가지 방법으로 연락 가능해요</h2>
+        </div>
+        <div class="contact-grid">
+          
+          <!-- 전화 -->
+          <div class="contact-card">
+            <div class="icon-box">
+              <i data-lucide="phone"></i>
+            </div>
+            <h3 class="contact-card-title">전화 문의</h3>
+            <p class="contact-card-desc">빠르게 통화로 상담받고 싶을 때</p>
+            <p class="contact-info">[보완 필요: 전화번호]</p>
+            <a href="tel:" class="btn btn-secondary btn-sm">전화 걸기</a>
+          </div>
+
+          <!-- 이메일 -->
+          <div class="contact-card">
+            <div class="icon-box">
+              <i data-lucide="mail"></i>
+            </div>
+            <h3 class="contact-card-title">이메일 문의</h3>
+            <p class="contact-card-desc">상세한 내용을 남기고 싶을 때</p>
+            <p class="contact-info">[보완 필요: 이메일 주소]</p>
+            <a href="mailto:" class="btn btn-secondary btn-sm">이메일 보내기</a>
+          </div>
+
+          <!-- 카카오톡 -->
+          <div class="contact-card">
+            <div class="icon-box">
+              <i data-lucide="message-circle"></i>
+            </div>
+            <h3 class="contact-card-title">카카오톡 채팅</h3>
+            <p class="contact-card-desc">가장 빠르고 편한 실시간 상담</p>
+            <p class="contact-info">Guitar Brand 채널</p>
+            <a href="#" class="btn btn-primary btn-sm">채팅 시작</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 상담 가능 시간 -->
+    <section class="hours-section">
+      <div class="container">
+        <div class="hours-content">
+          <span class="section-label">BUSINESS HOURS</span>
+          <h2 class="section-title">상담 가능 시간</h2>
+          <p class="section-desc mx-auto">아래 시간에 문의하시면 빠르게 답변 받으실 수 있어요</p>
+          
+          <div class="hours-list">
+            <div class="hours-item">
+              <span class="hours-label">평일 (월~금)</span>
+              <span class="hours-time">오전 9:00 ~ 오후 6:00</span>
+            </div>
+            <div class="hours-item">
+              <span class="hours-label">주말 및 공휴일</span>
+              <span class="hours-time">휴무</span>
+            </div>
+            <div class="hours-item">
+              <span class="hours-label">카카오톡 채팅</span>
+              <span class="hours-time">24시간 메시지 접수 (순차 답변)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ 프리뷰 -->
+    <section class="faq-preview">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title">자주 묻는 질문</h2>
+          <p class="section-desc mx-auto">문의하기 전에 먼저 확인해보세요</p>
+        </div>
+        <div class="faq-list">
+          
+          <div class="faq-item is-open">
+            <button class="faq-question">
+              배송은 얼마나 걸리나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              결제 완료 후 평균 2~3일 소요돼요. 일부 지역은 4~5일이 걸릴 수 있어요.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              반품이 가능한가요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              수령 후 7일 이내에 미개봉 상태라면 전액 환불 가능해요. 개봉 후에는 제품 하자가 있을 경우에만 가능해요.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              초보자인데 어떤 기타를 골라야 할까요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              카카오톡 채팅 또는 전화로 상담받으시면, 예산과 취향에 맞는 기타를 추천해드려요.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              AS는 어떻게 받나요?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              구매 후 1년간 무상 AS가 제공돼요. 이메일 또는 전화로 접수하시면 안내해드려요.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">아직도 궁금한 점이 있으신가요?</h2>
+        <p class="section-desc mx-auto">지금 바로 카카오톡 채팅으로 상담받으세요. 실시간으로 답변드려요.</p>
+        <a href="#" class="btn btn-primary">카카오톡 상담 시작</a>
+        <p class="microcopy">평일 9시~18시 운영 · 주말 및 공휴일 휴무</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">Guitar Brand</p>
+          <p class="footer-brand-desc">기타 전문 쇼핑몰<br><br>
+            상호: [보완 필요: 상호명]<br>
+            대표: [보완 필요: 대표자명]<br>
+            사업자번호: [보완 필요]<br>
+            주소: [보완 필요]<br>
+            전화: [보완 필요]<br>
+            이메일: [보완 필요]
+          </p>
+        </div>
+        <div>
+          <p class="footer-col-title">메뉴</p>
+          <a href="page_01.html">제공하는 제품/서비스가 무엇인가요?</a>
+          <a href="page_02.html">주요 타겟 고객층은 누구인가요?</a>
+          <a href="page_03.html">웹사이트에 꼭 포함되어야 할 메뉴나 기능은 무엇인가요?</a>
+        </div>
+        <div>
+          <p class="footer-col-title">정보</p>
+          <a href="page_04.html">회사 소개, 연혁 등 기본 정보</a>
+          <a href="page_05.html">고객 문의 방법 (전화, 이메일, 채팅 등)</a>
+        </div>
+        <div>
+          <p class="footer-col-title">SNS</p>
+          <p style="font-size:14px; color:var(--text-light);">[보완 필요: SNS 링크]</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Guitar Brand. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 플로팅 버튼 -->
+  <div class="floating-btns">
+    <a href="#" class="floating-btn floating-kakao" aria-label="카카오톡 상담">
+      <i data-lucide="message-circle"></i>
+    </a>
+    <button class="floating-btn" id="topBtn" aria-label="맨 위로">
+      <i data-lucide="arrow-up"></i>
+    </button>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // 스크롤 시 헤더 변화
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Top 버튼
+    document.getElementById('topBtn').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ 아코디언
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('is-open');
+        
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        
+        if (!wasOpen) {
+          item.classList.add('is-open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
