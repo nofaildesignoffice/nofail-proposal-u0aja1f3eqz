@@ -1,12 +1,11 @@
-<!-- PAGE: 주요 제공 상품/서비스 -->
+<!-- PAGE: 웹사이트 목적 (판매, 홍보, 정보제공 등) -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>기타 전체 제품 | 기타 전문 온라인 악기점</title>
-  <meta name="description" content="어쿠스틱, 일렉트릭, 베이스 기타와 악세서리까지. 브랜드·가격·용도별 필터로 나에게 맞는 기타를 찾아보세요. 음색 샘플 재생, 30일 체험 보장.">
-  <meta name="keywords" content="기타 구매, 어쿠스틱 기타 추천, 일렉기타 가격, 초보 기타 추천, 베이스 기타">
+  <title>웹사이트 목적 안내</title>
+  <meta name="description" content="웹사이트 목적 및 활용 방안을 확인하세요">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,7 +18,6 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
-      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -48,81 +46,7 @@
       padding: 0 24px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .icon-box svg {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-    }
-
-    /* Header */
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
@@ -145,344 +69,155 @@
       display: flex;
       gap: 32px;
     }
-    .nav-links > li {
-      position: relative;
-    }
-    .nav-links > li > a {
+    .nav-links a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      display: block;
-      padding: 8px 0;
+      transition: color 0.2s;
     }
-    .nav-links > li.active > a {
+    .nav-links a:hover { color: var(--text-black); }
+    .nav-links a.active {
       color: var(--text-black);
       font-weight: 600;
     }
-    .nav-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 12px 0;
-      min-width: 200px;
-      display: none;
-      box-shadow: var(--shadow-md);
-    }
-    .nav-links > li:hover .nav-dropdown {
-      display: block;
-    }
-    .nav-dropdown a {
-      display: block;
-      padding: 8px 20px;
-      font-size: 14px;
-      color: var(--text-gray);
-    }
-    .nav-dropdown a:hover {
-      background: var(--bg-light);
-      color: var(--text-black);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      padding: 8px;
-    }
-    .hamburger span {
-      width: 24px;
-      height: 2px;
-      background: var(--text-black);
-      border-radius: 2px;
-    }
-
-    /* Category Tabs */
-    .category-section {
-      padding: 80px 0 40px;
-      background: var(--bg-white);
-    }
-    .category-tabs {
+    .nav-actions {
       display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 48px;
-      flex-wrap: wrap;
-    }
-    .category-tab {
-      flex: 1;
-      min-width: 200px;
-      max-width: 240px;
-      padding: 32px 24px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .category-tab:hover,
-    .category-tab.active {
-      border-color: var(--text-black);
-      box-shadow: var(--shadow-sm);
-    }
-    .category-tab .icon-box {
-      margin: 0 auto 16px;
-      width: 64px;
-      height: 64px;
-    }
-    .category-tab .icon-box svg {
-      width: 28px;
-      height: 28px;
-    }
-    .category-tab-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .category-tab-desc {
-      font-size: 13px;
-      color: var(--text-gray);
-      line-height: 1.5;
-    }
-
-    /* Filter Bar */
-    .filter-section {
-      padding: 40px 0;
-      background: var(--bg-light);
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .filter-bar {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-    .filter-group {
-      flex: 1;
-      min-width: 180px;
-    }
-    .filter-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-      display: block;
-    }
-    .filter-select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      background: var(--bg-white);
-      font-size: 14px;
-      color: var(--text-dark);
-    }
-    .sort-bar {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-light);
+      gap: 12px;
     }
-    .result-count {
-      font-size: 14px;
-      color: var(--text-gray);
-    }
-    .sort-group {
-      display: flex;
+
+    /* Button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
-      align-items: center;
-    }
-
-    /* Product Grid */
-    .product-grid-section {
-      padding: 60px 0;
-      background: var(--bg-white);
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    .product-card {
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: box-shadow 0.2s;
-    }
-    .product-card:hover {
-      box-shadow: var(--shadow-md);
-    }
-    .product-image {
-      position: relative;
-      aspect-ratio: 1/1;
-    }
-    .product-badges {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      background: var(--bg-white);
-      color: var(--text-dark);
-    }
-    .badge-best {
-      background: var(--bg-black);
-      color: #FFFFFF;
-    }
-    .product-audio {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--bg-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-sm);
-    }
-    .product-audio svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-black);
-    }
-    .product-info {
-      padding: 20px;
-    }
-    .product-brand {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 4px;
-    }
-    .product-name {
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
       font-size: 15px;
       font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
       color: var(--text-black);
-      margin-bottom: 12px;
-      line-height: 1.4;
+      border: 1px solid var(--border-default);
     }
-    .product-price {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .price-original {
-      font-size: 14px;
-      color: var(--text-light);
-      text-decoration: line-through;
-    }
-    .price-sale {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .product-rating {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .stars {
-      display: flex;
-      gap: 2px;
-    }
-    .stars svg {
-      width: 14px;
-      height: 14px;
-      color: var(--text-muted);
-    }
-    .review-count {
-      font-size: 13px;
-      color: var(--text-light);
-    }
-    .product-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px;
-      border-top: 1px solid var(--border-light);
+    .btn-sm { padding: 10px 20px; font-size: 14px; }
+
+    /* Typography */
+    .section-label {
       font-size: 14px;
       font-weight: 600;
-      color: var(--text-dark);
-      margin-top: 12px;
+      color: var(--text-light);
+      margin-bottom: 12px;
     }
-    .product-link svg {
-      width: 16px;
-      height: 16px;
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
     }
-    .load-more {
-      text-align: center;
-      margin-top: 48px;
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
     }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* Best Seller Section */
-    .bestseller-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .bestseller-slider {
-      margin-top: 48px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 16px;
-    }
-    .bestseller-track {
-      display: flex;
-      gap: 24px;
-    }
-    .bestseller-card {
-      min-width: 280px;
-      flex-shrink: 0;
-      scroll-snap-align: start;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      background: var(--bg-white);
-      overflow: hidden;
-    }
-    .rank-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--bg-black);
-      color: #FFFFFF;
+    /* Image Placeholder */
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
     }
 
-    /* Guide CTA */
-    .guide-cta-section {
-      padding: 80px 0;
+    /* Icon Box */
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
+    /* Hero Section */
+    .hero-center {
+      padding: 120px 0 80px;
       background: var(--bg-white);
+      text-align: center;
     }
+    .hero-center .section-title {
+      font-size: 42px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-center .section-desc { margin-left: auto; margin-right: auto; }
+    .hero-center .hero-buttons { display: flex; gap: 12px; justify-content: center; margin-top: 32px; }
 
-    /* Contact CTA */
-    .contact-cta-section {
+    /* Feature Cards */
+    .feature-section {
       padding: 80px 0;
       background: var(--bg-light);
     }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .feature-card {
+      padding: 32px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
+    .feature-card .icon-box { margin-bottom: 20px; }
+    .feature-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .feature-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-light {
+      padding: 80px 0;
+      text-align: center;
+      background: var(--bg-white);
+    }
+    .cta-light .section-title { max-width: 500px; margin: 0 auto 16px; }
+    .cta-light .section-desc { margin: 0 auto 32px; }
 
     /* Footer */
     .footer-light {
@@ -519,7 +254,9 @@
       font-size: 14px;
       color: var(--text-light);
       padding: 4px 0;
+      transition: color 0.2s;
     }
+    .footer-col a:hover { color: var(--text-dark); }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -528,749 +265,119 @@
       color: var(--text-muted);
     }
 
-    /* TOP Button */
-    .top-button {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--bg-black);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .top-button.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .top-button svg {
-      width: 20px;
-      height: 20px;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hamburger { display: flex; }
       .section-title { font-size: 28px; }
-      .category-tabs { flex-direction: column; }
-      .category-tab { max-width: 100%; }
-      .filter-bar { flex-direction: column; }
-      .filter-group { min-width: 100%; }
-      .sort-bar { flex-direction: column; gap: 16px; align-items: flex-start; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 8px; }
+      .hero-center .section-title { font-size: 32px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">기타 전문몰</a>
-        <ul class="nav-links">
-          <li><a href="page_01.html">사업/서비스 내용</a></li>
-          <li class="active">
-            <a href="page_02.html">주요 제공 상품/서비스</a>
-            <div class="nav-dropdown">
-              <a href="page_02.html#acoustic">어쿠스틱 기타</a>
-              <a href="page_02.html#electric">일렉트릭 기타</a>
-              <a href="page_02.html#bass">베이스 기타</a>
-              <a href="page_02.html#accessories">악세서리</a>
-            </div>
-          </li>
-          <li><a href="page_03.html">타겟 고객층</a></li>
-          <li><a href="page_04.html">필요한 주요 페이지 및 기능</a></li>
-          <li><a href="page_05.html">회사 소개 관련 정보</a></li>
-          <li><a href="page_06.html">고객 문의/상담 방식</a></li>
-        </ul>
-        <button class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <a href="index.html" class="nav-logo">브랜드명</a>
+        <nav class="nav-links">
+          <a href="page_01.html">사업 내용 및 제공 서비스/제품</a>
+          <a href="page_02.html" class="active">웹사이트 목적</a>
+          <a href="page_03.html">필요한 주요 메뉴 및 페이지 구성</a>
+          <a href="page_04.html">타겟 고객층</a>
+          <a href="page_05.html">핵심 콘텐츠</a>
+        </nav>
+        <div class="nav-actions">
+          <a href="page_03.html" class="btn btn-primary btn-sm">문의하기</a>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- Section 1: Category Tabs -->
-    <section class="category-section">
+    <!-- HERO -->
+    <section class="hero-center">
+      <div class="container">
+        <p class="section-label">Website Purpose</p>
+        <h1 class="section-title">웹사이트 목적</h1>
+        <p class="section-desc mx-auto">웹사이트의 목적과 활용 방안을 안내합니다</p>
+      </div>
+    </section>
+
+    <!-- FEATURE: Purpose Categories -->
+    <section class="feature-section">
       <div class="container">
         <div class="text-center">
-          <h1 class="section-title">어떤 소리를 찾고 있나요</h1>
-          <p class="section-desc mx-auto">카테고리를 선택하면 딱 맞는 기타를 만날 수 있어요</p>
+          <h2 class="section-title">주요 목적</h2>
+          <p class="section-desc mx-auto">웹사이트가 제공하는 핵심 가치</p>
         </div>
-        <div class="category-tabs">
-          <div class="category-tab active" data-category="all">
-            <div class="icon-box"><i data-lucide="music"></i></div>
-            <p class="category-tab-title">전체</p>
-            <p class="category-tab-desc">모든 제품 보기</p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon-box"><i data-lucide="shopping-cart"></i></div>
+            <h3 class="feature-card-title">판매</h3>
+            <p class="feature-card-desc">제품 및 서비스의 직접 판매 채널 역할을 수행합니다</p>
           </div>
-          <div class="category-tab" data-category="acoustic">
-            <div class="icon-box"><i data-lucide="guitar"></i></div>
-            <p class="category-tab-title">어쿠스틱 기타</p>
-            <p class="category-tab-desc">맑고 따뜻한 통기타 사운드</p>
+          <div class="feature-card">
+            <div class="icon-box"><i data-lucide="megaphone"></i></div>
+            <h3 class="feature-card-title">홍보</h3>
+            <p class="feature-card-desc">브랜드 인지도 향상 및 마케팅 활동을 지원합니다</p>
           </div>
-          <div class="category-tab" data-category="electric">
-            <div class="icon-box"><i data-lucide="zap"></i></div>
-            <p class="category-tab-title">일렉트릭 기타</p>
-            <p class="category-tab-desc">이펙터와 앰프로 만드는 무대 사운드</p>
-          </div>
-          <div class="category-tab" data-category="bass">
-            <div class="icon-box"><i data-lucide="radio"></i></div>
-            <p class="category-tab-title">베이스 기타</p>
-            <p class="category-tab-desc">밴드의 리듬을 책임지는 저음</p>
-          </div>
-          <div class="category-tab" data-category="accessories">
-            <div class="icon-box"><i data-lucide="box"></i></div>
-            <p class="category-tab-title">악세서리</p>
-            <p class="category-tab-desc">현, 피크, 카포, 스트랩, 케이스</p>
+          <div class="feature-card">
+            <div class="icon-box"><i data-lucide="book-open"></i></div>
+            <h3 class="feature-card-title">정보제공</h3>
+            <p class="feature-card-desc">고객에게 필요한 정보를 체계적으로 전달합니다</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Filter & Sort Bar -->
-    <section class="filter-section">
+    <!-- CTA -->
+    <section class="cta-light">
       <div class="container">
-        <div class="filter-bar">
-          <div class="filter-group">
-            <label class="filter-label">브랜드</label>
-            <select class="filter-select">
-              <option>전체</option>
-              <option>브랜드 A</option>
-              <option>브랜드 B</option>
-              <option>브랜드 C</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label">가격대</label>
-            <select class="filter-select">
-              <option>전체</option>
-              <option>30만원 이하</option>
-              <option>30~50만원</option>
-              <option>50~100만원</option>
-              <option>100만원 이상</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label">용도</label>
-            <select class="filter-select">
-              <option>전체</option>
-              <option>초보자 추천</option>
-              <option>중급자 업그레이드</option>
-              <option>자녀용</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label">바디 타입</label>
-            <select class="filter-select">
-              <option>전체</option>
-              <option>드레드넛</option>
-              <option>컷어웨이</option>
-              <option>클래식</option>
-              <option>솔리드바디</option>
-              <option>할로우바디</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label">색상</label>
-            <select class="filter-select">
-              <option>전체</option>
-              <option>내추럴</option>
-              <option>선버스트</option>
-              <option>블랙</option>
-              <option>화이트</option>
-              <option>기타</option>
-            </select>
-          </div>
-        </div>
-        <div class="sort-bar">
-          <p class="result-count">전체 제품 표시</p>
-          <div class="sort-group">
-            <span class="filter-label" style="margin:0;">정렬:</span>
-            <select class="filter-select" style="width:auto; min-width:140px;">
-              <option>인기순</option>
-              <option>신상품순</option>
-              <option>낮은 가격순</option>
-              <option>높은 가격순</option>
-              <option>리뷰 많은 순</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 3: Product Grid -->
-    <section class="product-grid-section">
-      <div class="container">
-        <div class="product-grid">
-          
-          <!-- Product Card 1 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge badge-best">베스트셀러</span>
-                <span class="badge">초보자 추천</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 어쿠스틱 기타</h3>
-              <div class="product-price">
-                <span class="price-sale">가격</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 2 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge">신상품</span>
-                <span class="badge">무이자 할부</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 일렉트릭 기타</h3>
-              <div class="product-price">
-                <span class="price-original">정가</span>
-                <span class="price-sale">할인가</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 3 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge">초보자 추천</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 베이스 기타</h3>
-              <div class="product-price">
-                <span class="price-sale">가격</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 4 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge">무이자 할부</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 어쿠스틱 기타</h3>
-              <div class="product-price">
-                <span class="price-original">정가</span>
-                <span class="price-sale">할인가</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 5 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge badge-best">베스트셀러</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 일렉트릭 기타</h3>
-              <div class="product-price">
-                <span class="price-sale">가격</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 6 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge">신상품</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">기타 악세서리 세트</h3>
-              <div class="product-price">
-                <span class="price-sale">가격</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 7 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge">초보자 추천</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 베이스 기타</h3>
-              <div class="product-price">
-                <span class="price-original">정가</span>
-                <span class="price-sale">할인가</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Card 8 -->
-          <div class="product-card">
-            <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-              <i data-lucide="image"></i>
-              <div class="product-badges">
-                <span class="badge">무이자 할부</span>
-              </div>
-              <button class="product-audio">
-                <i data-lucide="volume-2"></i>
-              </button>
-            </div>
-            <div class="product-info">
-              <p class="product-brand">브랜드명</p>
-              <h3 class="product-name">모델명 어쿠스틱 기타</h3>
-              <div class="product-price">
-                <span class="price-sale">가격</span>
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-count">리뷰 수</span>
-              </div>
-              <a href="#" class="product-link">
-                자세히 보기
-                <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-        <div class="load-more">
-          <button class="btn btn-secondary">더 보기</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 4: Best Sellers -->
-    <section class="bestseller-section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">이번 달 가장 많이 팔린 기타 TOP 5</h2>
-        </div>
-        <div class="bestseller-slider">
-          <div class="bestseller-track">
-            
-            <!-- Bestseller Card 1 -->
-            <div class="bestseller-card">
-              <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-                <i data-lucide="image"></i>
-                <div class="rank-badge">1</div>
-                <button class="product-audio">
-                  <i data-lucide="volume-2"></i>
-                </button>
-              </div>
-              <div class="product-info">
-                <p class="product-brand">브랜드명</p>
-                <h3 class="product-name">1위 모델명</h3>
-                <div class="product-price">
-                  <span class="price-sale">가격</span>
-                </div>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                  </div>
-                  <span class="review-count">리뷰 수</span>
-                </div>
-                <a href="#" class="product-link">
-                  자세히 보기
-                  <i data-lucide="arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Bestseller Card 2 -->
-            <div class="bestseller-card">
-              <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-                <i data-lucide="image"></i>
-                <div class="rank-badge">2</div>
-                <button class="product-audio">
-                  <i data-lucide="volume-2"></i>
-                </button>
-              </div>
-              <div class="product-info">
-                <p class="product-brand">브랜드명</p>
-                <h3 class="product-name">2위 모델명</h3>
-                <div class="product-price">
-                  <span class="price-sale">가격</span>
-                </div>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                  </div>
-                  <span class="review-count">리뷰 수</span>
-                </div>
-                <a href="#" class="product-link">
-                  자세히 보기
-                  <i data-lucide="arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Bestseller Card 3 -->
-            <div class="bestseller-card">
-              <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-                <i data-lucide="image"></i>
-                <div class="rank-badge">3</div>
-                <button class="product-audio">
-                  <i data-lucide="volume-2"></i>
-                </button>
-              </div>
-              <div class="product-info">
-                <p class="product-brand">브랜드명</p>
-                <h3 class="product-name">3위 모델명</h3>
-                <div class="product-price">
-                  <span class="price-sale">가격</span>
-                </div>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                  </div>
-                  <span class="review-count">리뷰 수</span>
-                </div>
-                <a href="#" class="product-link">
-                  자세히 보기
-                  <i data-lucide="arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Bestseller Card 4 -->
-            <div class="bestseller-card">
-              <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-                <i data-lucide="image"></i>
-                <div class="rank-badge">4</div>
-                <button class="product-audio">
-                  <i data-lucide="volume-2"></i>
-                </button>
-              </div>
-              <div class="product-info">
-                <p class="product-brand">브랜드명</p>
-                <h3 class="product-name">4위 모델명</h3>
-                <div class="product-price">
-                  <span class="price-sale">가격</span>
-                </div>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                  </div>
-                  <span class="review-count">리뷰 수</span>
-                </div>
-                <a href="#" class="product-link">
-                  자세히 보기
-                  <i data-lucide="arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Bestseller Card 5 -->
-            <div class="bestseller-card">
-              <div class="product-image img-placeholder" style="aspect-ratio:1/1;">
-                <i data-lucide="image"></i>
-                <div class="rank-badge">5</div>
-                <button class="product-audio">
-                  <i data-lucide="volume-2"></i>
-                </button>
-              </div>
-              <div class="product-info">
-                <p class="product-brand">브랜드명</p>
-                <h3 class="product-name">5위 모델명</h3>
-                <div class="product-price">
-                  <span class="price-sale">가격</span>
-                </div>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                  </div>
-                  <span class="review-count">리뷰 수</span>
-                </div>
-                <a href="#" class="product-link">
-                  자세히 보기
-                  <i data-lucide="arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 5: Guide CTA -->
-    <section class="guide-cta-section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">어떤 기타를 골라야 할지 모르겠다면</h2>
-          <p class="section-desc mx-auto">3분이면 나에게 맞는 기타를 찾을 수 있어요<br>예산, 장르, 연주 경험에 맞춘 추천 가이드</p>
-          <div style="margin-top:32px;">
-            <a href="page_04.html" class="btn btn-primary">맞춤 가이드 보기 <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 6: Contact CTA -->
-    <section class="contact-cta-section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">원하는 모델이 안 보이거나 재고가 궁금하다면</h2>
-          <p class="section-desc mx-auto">카카오톡이나 전화로 바로 확인해 드려요</p>
-          <div style="margin-top:32px;">
-            <a href="page_06.html" class="btn btn-primary">문의하기</a>
-          </div>
-        </div>
+        <h2 class="section-title">더 자세한 정보가 필요하신가요?</h2>
+        <p class="section-desc mx-auto">웹사이트 구성 및 주요 페이지 정보를 확인하세요</p>
+        <a href="page_03.html" class="btn btn-primary">페이지 구성 보기</a>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">기타 전문몰</p>
-          <p class="footer-brand-desc">기타 전문 온라인 악기점</p>
+          <p class="footer-brand-name">브랜드명</p>
+          <p class="footer-brand-desc">웹사이트 한 줄 설명</p>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">메뉴</p>
-          <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 상품/서비스</a>
-          <a href="page_03.html">타겟 고객층</a>
+          <a href="page_01.html">사업 내용 및 제공 서비스/제품</a>
+          <a href="page_02.html">웹사이트 목적</a>
+          <a href="page_03.html">필요한 주요 메뉴 및 페이지 구성</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">안내</p>
-          <a href="page_04.html">필요한 주요 페이지 및 기능</a>
-          <a href="page_05.html">회사 소개 관련 정보</a>
+          <a href="page_04.html">타겟 고객층</a>
+          <a href="page_05.html">핵심 콘텐츠</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">고객 지원</p>
-          <a href="page_06.html">고객 문의/상담 방식</a>
+          <a href="page_03.html">문의하기</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 기타 전문몰. All Rights Reserved.</span>
-        <span><a href="#">개인정보처리방침</a> | <a href="#">이용약관</a></span>
+        <span>© 2025 Brand. All rights reserved.</span>
+        <span>이용약관 | 개인정보처리방침</span>
       </div>
     </div>
   </footer>
 
-  <!-- TOP Button -->
-  <button class="top-button" id="topButton">
-    <i data-lucide="arrow-up"></i>
-  </button>
-
   <script>
     lucide.createIcons();
-
-    // Category Tab Filter
-    const categoryTabs = document.querySelectorAll('.category-tab');
-    categoryTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        categoryTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        // Filter logic would be implemented here
-      });
-    });
-
-    // TOP Button
-    const topButton = document.getElementById('topButton');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topButton.classList.add('visible');
-      } else {
-        topButton.classList.remove('visible');
-      }
-    });
-    topButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Hamburger Menu (Mobile)
-    const hamburger = document.querySelector('.hamburger');
-    hamburger.addEventListener('click', () => {
-      alert('모바일 메뉴 (실제 구현 시 사이드 패널 표시)');
-    });
   </script>
 </body>
 </html>
