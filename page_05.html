@@ -1,11 +1,12 @@
-<!-- PAGE: Slack 메모 텍스트 내용 -->
+<!-- PAGE: 회사 소개 관련 정보 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>문의하기 | 고객사</title>
-  <meta name="description" content="부담 없이 물어보세요, 빠르게 답변드리겠습니다. 접수 후 영업일 기준 24시간 내 회신을 약속합니다.">
+  <title>회사 소개 관련 정보 | 기타 전문 온라인 악기점</title>
+  <meta name="description" content="기타 입문자부터 중급자까지의 선택 불안을 음색 샘플·전문가 가이드·30일 체험 보장으로 해결하는 악기 전문몰입니다.">
+  <meta name="keywords" content="기타 구매, 어쿠스틱 기타, 일렉기타, 기타 추천, 초보 기타, 악기 온라인, 기타 전문몰">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -40,20 +41,6 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
-    input, textarea, select {
-      font-family: 'Pretendard', sans-serif;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      font-size: 15px;
-      width: 100%;
-      transition: border-color 0.2s;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: var(--text-black);
-    }
-    textarea { resize: vertical; min-height: 120px; }
 
     .container {
       max-width: 1200px;
@@ -61,6 +48,7 @@
       padding: 0 24px;
     }
 
+    /* 버튼 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -83,6 +71,7 @@
       border: 1px solid var(--border-default);
     }
 
+    /* 섹션 공통 텍스트 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
@@ -105,25 +94,58 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    .microcopy {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-top: 12px;
+    /* 이미지 플레이스홀더 */
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
     }
 
-    /* NAV */
+    /* 아이콘 박스 */
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
+    /* 헤더 */
     .nav {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
+    }
+    .nav.scrolled {
+      height: 64px;
+    }
+    .nav.scrolled .nav-inner {
+      height: 64px;
     }
     .nav-logo {
       font-size: 18px;
@@ -134,220 +156,204 @@
       display: flex;
       gap: 32px;
     }
-    .nav-links a {
+    .nav-links > li {
+      position: relative;
+    }
+    .nav-links > li > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
+      display: block;
+      padding: 8px 0;
     }
-    .nav-links a.active {
+    .nav-links > li > a.active {
       color: var(--text-black);
       font-weight: 700;
     }
-    .nav-toggle {
-      display: none;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .nav-toggle svg {
-      width: 24px;
-      height: 24px;
+    .nav-links > li:hover > a {
       color: var(--text-black);
     }
 
-    /* HERO SECTION - 섹션 1 */
-    .contact-hero {
-      padding: 120px 0 80px;
-      background: var(--bg-dark);
-      text-align: center;
-      position: relative;
-    }
-    .contact-hero .section-title {
-      color: #FFFFFF;
-      font-size: 42px;
-      max-width: 700px;
-      margin: 0 auto 16px;
-    }
-    .contact-hero .section-desc {
-      color: rgba(255,255,255,0.7);
-      margin: 0 auto 12px;
-    }
-    .contact-hero .helper-text {
-      font-size: 14px;
-      color: rgba(255,255,255,0.5);
-    }
-
-    /* FORM SECTION - 섹션 2 */
-    .contact-form-section {
-      padding: 80px 0;
+    /* 드롭다운 */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
       background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      min-width: 180px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.2s;
     }
-    .form-container {
-      max-width: 600px;
-      margin: 0 auto;
+    .nav-links > li:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-label {
+    .dropdown-menu a {
       display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .form-label .required {
-      color: #E53E3E;
-      margin-left: 2px;
-    }
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-top: 24px;
-    }
-    .checkbox-group input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .checkbox-group label {
+      padding: 10px 20px;
       font-size: 14px;
       color: var(--text-dark);
     }
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      font-size: 16px;
-      margin-top: 32px;
+    .dropdown-menu a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
     }
 
-    /* CONTACT METHODS - 섹션 3 */
-    .contact-methods {
+    /* 모바일 햄버거 */
+    .nav-hamburger {
+      display: none;
+      width: 24px;
+      height: 24px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text-black);
+      transition: all 0.3s;
+    }
+
+    /* Hero 중앙 정렬 */
+    .hero-center {
+      padding: 100px 0 80px;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .hero-center .section-title {
+      font-size: 42px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 브랜드 스토리 섹션 */
+    .brand-story-section {
       padding: 80px 0;
       background: var(--bg-light);
     }
-    .methods-grid {
+    .brand-story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    /* 차별화 특징 3열 */
+    .differentiation-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .diff-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
     }
-    .method-card {
+    .diff-card {
       padding: 32px;
-      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       text-align: center;
     }
-    .method-icon {
-      width: 56px;
-      height: 56px;
+    .diff-icon-wrap {
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
+      margin: 0 auto 20px;
     }
-    .method-icon svg {
+    .diff-icon-wrap svg {
       width: 28px;
       height: 28px;
       color: var(--text-dark);
     }
-    .method-title {
-      font-size: 17px;
+    .diff-card-title {
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .method-desc {
-      font-size: 14px;
+    .diff-card-desc {
+      font-size: 15px;
       color: var(--text-gray);
-      margin-bottom: 16px;
-    }
-    .method-info {
-      font-size: 15px;
-      color: var(--text-dark);
-      font-weight: 600;
-    }
-    .method-placeholder {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-style: italic;
+      line-height: 1.6;
     }
 
-    /* LOCATION - 섹션 4 */
-    .location-section {
+    /* 타겟 고객 섹션 */
+    .target-section {
       padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .map-container {
-      width: 100%;
-      height: 400px;
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 48px;
-    }
-    .map-placeholder {
-      text-align: center;
-      color: var(--placeholder-icon);
-    }
-    .map-placeholder svg {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 16px;
-    }
-    .map-placeholder p {
-      font-size: 15px;
-    }
-
-    /* TRUST REMINDER - 섹션 5 */
-    .trust-section {
-      padding: 60px 0;
       background: var(--bg-light);
     }
-    .trust-grid {
+    .target-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto;
+      gap: 24px;
+      margin-top: 48px;
     }
-    .trust-item {
-      text-align: center;
-    }
-    .trust-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
+    .target-card {
+      padding: 32px;
       background: var(--bg-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
     }
-    .trust-icon svg {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
+    .target-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    .trust-text {
+    .target-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .target-info-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .target-info-item:last-child {
+      border-bottom: none;
+    }
+    .target-info-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .target-info-value {
       font-size: 14px;
       color: var(--text-dark);
       line-height: 1.6;
     }
 
-    /* FOOTER */
-    .footer {
+    /* CTA 섹션 */
+    .cta-light {
+      padding: 80px 0;
+      text-align: center;
+      background: var(--bg-white);
+    }
+    .cta-light .section-title { max-width: 500px; margin: 0 auto 16px; }
+    .cta-light .section-desc { margin: 0 auto 32px; }
+
+    /* 푸터 */
+    .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -382,6 +388,9 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -389,67 +398,105 @@
       font-size: 13px;
       color: var(--text-muted);
     }
+    .footer-bottom-links a {
+      color: var(--text-muted);
+      margin-left: 16px;
+    }
 
-    /* TOP BUTTON */
-    .top-btn {
+    /* TOP 버튼 */
+    .btn-top {
       position: fixed;
       bottom: 32px;
       right: 32px;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
       background: var(--text-black);
       color: #FFFFFF;
+      border-radius: 50%;
       display: none;
       align-items: center;
       justify-content: center;
       box-shadow: var(--shadow-md);
-      cursor: pointer;
-      z-index: 50;
+      z-index: 90;
     }
-    .top-btn.show {
+    .btn-top.visible {
       display: flex;
     }
-    .top-btn svg {
+    .btn-top svg {
       width: 20px;
       height: 20px;
     }
 
+    /* 반응형 */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+      }
+      .nav-hamburger {
+        display: flex;
+      }
       .section-title { font-size: 28px; }
-      .contact-hero .section-title { font-size: 32px; }
-      .methods-grid,
-      .trust-grid {
+      .hero-center .section-title { font-size: 32px; }
+      .brand-story-inner,
+      .diff-grid,
+      .target-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
       .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 32px;
       }
-      .map-container {
-        height: 300px;
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-bottom-links a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+      .btn-top {
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- 헤더 -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo">고객사</a>
-        <nav class="nav-links">
-          <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
-          <a href="page_03.html">타겟 고객층</a>
-          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
-          <a href="page_05.html" class="active">Slack 메모 텍스트 내용</a>
-        </nav>
-        <button class="nav-toggle" aria-label="메뉴">
-          <i data-lucide="menu"></i>
+        <a href="index.html" class="nav-logo">기타 전문몰</a>
+        <ul class="nav-links">
+          <li><a href="page_01.html">사업/서비스 내용</a></li>
+          <li>
+            <a href="page_02.html">주요 제공 상품/서비스</a>
+            <ul class="dropdown-menu">
+              <li><a href="page_02.html#acoustic">어쿠스틱 기타</a></li>
+              <li><a href="page_02.html#electric">일렉트릭 기타</a></li>
+              <li><a href="page_02.html#bass">베이스 기타</a></li>
+              <li><a href="page_02.html#accessories">악세서리</a></li>
+            </ul>
+          </li>
+          <li><a href="page_03.html">타겟 고객층</a></li>
+          <li>
+            <a href="page_04.html">필요한 주요 페이지 및 기능</a>
+            <ul class="dropdown-menu">
+              <li><a href="page_04.html#guide">초보자 가이드</a></li>
+              <li><a href="page_04.html#spec">스펙 비교표</a></li>
+            </ul>
+          </li>
+          <li><a href="page_05.html" class="active">회사 소개 관련 정보</a></li>
+          <li><a href="page_06.html">고객 문의/상담 방식</a></li>
+        </ul>
+        <button class="nav-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div>
@@ -457,210 +504,203 @@
 
   <main>
 
-    <!-- 섹션 1: 부담 없이 물어보세요, 빠르게 답변드리겠습니다 -->
-    <section class="contact-hero">
+    <!-- Hero 섹션 -->
+    <section class="hero-center">
       <div class="container">
-        <h1 class="section-title">부담 없이 물어보세요,<br>빠르게 답변드리겠습니다</h1>
-        <p class="section-desc mx-auto">접수 후 영업일 기준 24시간 내 회신을 약속합니다</p>
-        <p class="helper-text">상담은 무료이며, 문의 내용은 외부에 공유되지 않습니다</p>
+        <p class="section-label">브랜드 스토리</p>
+        <h1 class="section-title">온라인에서도 확신 있는<br>기타 구매 경험을 만들어요</h1>
+        <p class="section-desc mx-auto">음색 샘플·전문가 가이드·30일 체험 보장으로 기타 입문자부터 중급자까지의 선택 불안을 해결하는 악기 전문몰입니다.</p>
       </div>
     </section>
 
-    <!-- 섹션 2: 문의 폼 -->
-    <section class="contact-form-section">
+    <!-- 브랜드 가치 제안 섹션 -->
+    <section class="brand-story-section">
       <div class="container">
-        <div class="form-container">
-          <form>
-            <div class="form-group">
-              <label class="form-label">이름 <span class="required">*</span></label>
-              <input type="text" required placeholder="이름을 입력하세요">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">연락처 <span class="required">*</span></label>
-              <input type="tel" required placeholder="연락받으실 전화번호를 입력하세요">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">이메일</label>
-              <input type="email" placeholder="이메일을 입력하세요 (선택)">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">관심 서비스</label>
-              <select>
-                <option value="">선택하세요 (선택)</option>
-                <option value="service1">서비스 1</option>
-                <option value="service2">서비스 2</option>
-                <option value="service3">서비스 3</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">희망 상담 시간대</label>
-              <select>
-                <option value="">선택하세요 (선택)</option>
-                <option value="morning">오전 (09:00~12:00)</option>
-                <option value="afternoon">오후 (12:00~18:00)</option>
-                <option value="anytime">언제든지 편하신 시간에</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">문의 내용 <span class="required">*</span></label>
-              <textarea required placeholder="궁금하신 내용을 자세히 작성해주세요 (최소 50자 권장)"></textarea>
-            </div>
-
-            <div class="checkbox-group">
-              <input type="checkbox" id="agree" required>
-              <label for="agree">개인정보 수집 및 이용에 동의합니다 <span class="required">*</span></label>
-            </div>
-
-            <button type="submit" class="btn btn-primary submit-btn">문의 접수하기</button>
-            <p class="microcopy text-center">접수 후 영업일 기준 24시간 내 담당자가 연락드립니다</p>
-          </form>
+        <div class="brand-story-inner">
+          <div class="img-placeholder" style="aspect-ratio:4/3;">
+            <i data-lucide="image"></i>
+          </div>
+          <div>
+            <p class="section-label">우리의 미션</p>
+            <h2 class="section-title">실패 없이 나에게 딱 맞는 기타를 찾아 바로 연주를 시작하도록</h2>
+            <p class="section-desc">"온라인으로 기타를 사면 소리가 내 기대와 다르거나, 사이즈가 안 맞으면 어쩌지" — 이 불안을 해결하기 위해 우리는 음색 샘플 재생, 실구매 포토리뷰, 공식 수입원 인증 마크를 제공하고, 30일 집에서 체험 후 전액 환불을 보장해요.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 3: 다른 방법으로 연락하기 -->
-    <section class="contact-methods">
+    <!-- 차별화 3대 축 섹션 -->
+    <section class="differentiation-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">전화나 카카오톡으로도<br>상담할 수 있습니다</h2>
+          <p class="section-label">차별화 포인트</p>
+          <h2 class="section-title">우리가 다른 3가지 이유</h2>
+          <p class="section-desc mx-auto">기타 입문자부터 중급자까지, 모두가 만족하는 구매 경험을 제공하기 위한 핵심 가치예요.</p>
         </div>
-        <div class="methods-grid">
-          <div class="method-card">
-            <div class="method-icon">
-              <i data-lucide="phone"></i>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon-wrap">
+              <i data-lucide="headphones"></i>
             </div>
-            <h3 class="method-title">전화 상담</h3>
-            <p class="method-desc">빠른 상담이 필요하시면<br>전화로 문의하세요</p>
-            <p class="method-placeholder">[전화번호 미제공]</p>
-            <p class="method-placeholder">[상담 가능 시간 미제공]</p>
+            <h3 class="diff-card-title">체험 중심 구매</h3>
+            <p class="diff-card-desc">음색 샘플 재생 + 30일 집에서 체험 후 전액 환불 보장으로 온라인 구매 불안을 제거해요.</p>
           </div>
-
-          <div class="method-card">
-            <div class="method-icon">
-              <i data-lucide="message-circle"></i>
+          <div class="diff-card">
+            <div class="diff-icon-wrap">
+              <i data-lucide="graduation-cap"></i>
             </div>
-            <h3 class="method-title">카카오톡 상담</h3>
-            <p class="method-desc">채팅으로 편하게<br>상담받으세요</p>
-            <p class="method-placeholder">[카카오톡 채널명 미제공]</p>
-            <a href="#" class="btn btn-secondary" style="margin-top:12px; font-size:14px; padding:10px 20px;">카카오톡으로 상담하기</a>
+            <h3 class="diff-card-title">에듀테크 결합 커머스</h3>
+            <p class="diff-card-desc">기타 구매 시 온라인 레슨 연계, 단계별 학습 로드맵 + 악세서리 자동 추천을 제공해요.</p>
           </div>
-
-          <div class="method-card">
-            <div class="method-icon">
-              <i data-lucide="mail"></i>
+          <div class="diff-card">
+            <div class="diff-icon-wrap">
+              <i data-lucide="users"></i>
             </div>
-            <h3 class="method-title">이메일</h3>
-            <p class="method-desc">자세한 자료와 함께<br>문의하세요</p>
-            <p class="method-placeholder">[이메일 주소 미제공]</p>
+            <h3 class="diff-card-title">커뮤니티 기반 생태계</h3>
+            <p class="diff-card-desc">구매자 전용 잼 세션, 연습 인증 포인트, 중고 trade-in 마켓플레이스를 운영해요.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 4: 오시는 길 -->
-    <section class="location-section">
+    <!-- 타겟 고객 섹션 -->
+    <section class="target-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">오시는 길</h2>
+          <p class="section-label">타겟 고객</p>
+          <h2 class="section-title">이런 분들을 위해 만들었어요</h2>
+          <p class="section-desc mx-auto">각 고객층의 고민과 니즈를 정확히 이해하고, 맞춤형 솔루션을 제공해요.</p>
         </div>
-        <div class="map-container">
-          <div class="map-placeholder">
-            <i data-lucide="map-pin"></i>
-            <p>[주소 미제공 — 지도 임베드 예정]</p>
-            <p style="font-size:13px; margin-top:8px;">[교통안내 미제공]</p>
+        <div class="target-grid">
+          <!-- 1차 타겟 -->
+          <div class="target-card">
+            <p class="target-label">1차 타겟</p>
+            <h3 class="target-card-title">기타 입문자</h3>
+            <div class="target-info-item">
+              <p class="target-info-label">특징</p>
+              <p class="target-info-value">20대 중반, 취미 목적, 예산 50만원 내</p>
+            </div>
+            <div class="target-info-item">
+              <p class="target-info-label">고민</p>
+              <p class="target-info-value">브랜드·모델 선택 어려움</p>
+            </div>
+            <div class="target-info-item">
+              <p class="target-info-label">의사결정 기준</p>
+              <p class="target-info-value">초보자 추천 가이드 + 무료 반품</p>
+            </div>
+          </div>
+          <!-- 2차 타겟 -->
+          <div class="target-card">
+            <p class="target-label">2차 타겟</p>
+            <h3 class="target-card-title">중급자 업그레이드</h3>
+            <div class="target-info-item">
+              <p class="target-info-label">특징</p>
+              <p class="target-info-value">30대, 직장인</p>
+            </div>
+            <div class="target-info-item">
+              <p class="target-info-label">고민</p>
+              <p class="target-info-value">스펙 비교 복잡·직접 시연 불가</p>
+            </div>
+            <div class="target-info-item">
+              <p class="target-info-label">의사결정 기준</p>
+              <p class="target-info-value">상세 스펙 시트 + 프로 리뷰 + 무이자 할부</p>
+            </div>
+          </div>
+          <!-- 3차 타겟 -->
+          <div class="target-card">
+            <p class="target-label">3차 타겟</p>
+            <h3 class="target-card-title">자녀용 구매 부모</h3>
+            <div class="target-info-item">
+              <p class="target-info-label">특징</p>
+              <p class="target-info-value">40대</p>
+            </div>
+            <div class="target-info-item">
+              <p class="target-info-label">고민</p>
+              <p class="target-info-value">크기·안전성·지속 사용 가능성 불안</p>
+            </div>
+            <div class="target-info-item">
+              <p class="target-info-label">의사결정 기준</p>
+              <p class="target-info-value">연령별 사이즈 가이드 + KC 인증 + 교육기관 추천 배지</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 5: 신뢰 리마인더 -->
-    <section class="trust-section">
+    <!-- CTA 섹션 -->
+    <section class="cta-light">
       <div class="container">
-        <div class="trust-grid">
-          <div class="trust-item">
-            <div class="trust-icon">
-              <i data-lucide="smile"></i>
-            </div>
-            <p class="trust-text">상담은 무료입니다</p>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon">
-              <i data-lucide="shield"></i>
-            </div>
-            <p class="trust-text">문의 내용은 담당자만 확인하며,<br>외부에 공유되지 않습니다</p>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon">
-              <i data-lucide="check-circle"></i>
-            </div>
-            <p class="trust-text">강요나 영업 전화 없이,<br>궁금한 점에만 답변드립니다</p>
-          </div>
-        </div>
+        <h2 class="section-title">지금 바로 시작하세요</h2>
+        <p class="section-desc mx-auto">나에게 딱 맞는 기타를 찾고, 확신 있는 구매 경험을 만들어보세요.</p>
+        <a href="page_02.html" class="btn btn-primary">제품 둘러보기</a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <!-- 푸터 -->
+  <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">고객사</p>
-          <p class="footer-brand-desc">
-            상호: [미제공] | 대표: [미제공]<br>
-            사업자번호: [미제공]<br>
-            주소: [미제공]<br>
-            전화: [미제공] | 이메일: [미제공]
-          </p>
+          <p class="footer-brand-name">기타 전문몰</p>
+          <p class="footer-brand-desc">온라인에서도 확신 있는 기타 구매 경험</p>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">메뉴</p>
           <a href="page_01.html">사업/서비스 내용</a>
-          <a href="page_02.html">주요 제공 상품 또는 서비스</a>
+          <a href="page_02.html">주요 제공 상품/서비스</a>
           <a href="page_03.html">타겟 고객층</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">안내</p>
-          <a href="page_04.html">필요한 주요 메뉴 또는 기능</a>
-          <a href="page_05.html">Slack 메모 텍스트 내용</a>
+          <a href="page_04.html">필요한 주요 페이지 및 기능</a>
+          <a href="page_05.html">회사 소개 관련 정보</a>
+          <a href="page_06.html">고객 문의/상담 방식</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">고객 지원</p>
-          <p style="font-size:14px; color:var(--text-light);">[전화번호 미제공]</p>
-          <p style="font-size:14px; color:var(--text-light);">[이메일 미제공]</p>
+          <a href="page_06.html">문의하기</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 고객사. All Rights Reserved.</span>
-        <span>개인정보처리방침 | 이용약관</span>
+        <span>© 2025 기타 전문몰. All Rights Reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- TOP BUTTON -->
-  <button class="top-btn" id="topBtn" aria-label="맨 위로">
-    <i data-lucide="arrow-up"></i>
+  <!-- TOP 버튼 -->
+  <button class="btn-top" id="btnTop">
+    <i data-lucide="chevron-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const topBtn = document.getElementById('topBtn');
+    // 스크롤 시 헤더 축소
+    const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topBtn.classList.add('show');
+      if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
       } else {
-        topBtn.classList.remove('show');
+        nav.classList.remove('scrolled');
       }
     });
-    topBtn.addEventListener('click', () => {
+
+    // TOP 버튼
+    const btnTop = document.getElementById('btnTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btnTop.classList.add('visible');
+      } else {
+        btnTop.classList.remove('visible');
+      }
+    });
+    btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
